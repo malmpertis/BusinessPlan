@@ -1,0 +1,104 @@
+<!--ΣΤΟΙΧΕΙΑ ΤΑΥΤΟΤΗΤΑΣ ΕΠΙΧΕΙΡΗΣΗΣ-->
+<div>
+    <h2>ΓΕΝΙΚΑ ΣΤΟΙΧΕΙΑ ΕΠΙΧΕΙΡΗΣΗΣ</h2>
+    <hr />
+    <div layout="column" layout-align="start none">
+        <div layout="row" layout-align="space-around center">
+            <md-input-container flex="45">
+                <label>Επιλέξτε τον Τύπο της Επιχείρησης</label>
+                <md-select ng-model="c.data.company.businessType">
+                    <md-option ng-repeat="b in c.businessTypes" value="{{b}}">
+                        {{b}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container ng-show="c.data.company.businessType==c.businessTypes[1]" flex="45">
+                <label>Ημερομηνία Ίδρυσης</label>
+                <md-datepicker ng-model="c.data.company.creationDate"
+                               md-current-view="year">
+                </md-datepicker>
+            </md-input-container>
+        </div>
+        <div layout="row" layout-align="space-around center">
+            <md-input-container flex="30">
+                <label>Επωνυμία Επιχείρησης:</label>
+                <input ng-model="c.data.company.name">
+            </md-input-container>
+            <md-input-container flex="30" class="md-block">
+                <label>Διακριτικός Τίτλος Επιχείρησης:</label>
+                <input ng-model="c.data.company.title">
+            </md-input-container>
+            <md-input-container flex="30" ng-show="c.data.company.businessType==c.businessTypes[1]" class="md-block">
+                <label>Α.Φ.Μ. ή V.A.T. (ΕΚΤΟΣ ΕΛΛΑΔΟΣ):</label>
+                <input ng-model="c.data.company.afm" ng-change="c.checkAFM(c.data.company.afm)">
+            </md-input-container>
+        </div>
+        <div layout="row" layout-align="space-around center">
+            <div flex="30" layout="column" class="md-block">
+                <md-input-container>
+                    <label>Νομική Μορφή:</label>
+                    <md-select ng-model="c.data.company.legalForm">
+                        <md-option ng-repeat="l in c.legalForms" value="{{l}}">
+                            {{l}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <input type="text" ng-model="c.data.company.legalForm.other" ng-show="c.data.company.legalForm==c.legalForms[9]" />
+            </div>
+            <md-input-container flex="30" ng-show="c.data.company.businessType==c.businessTypes[1]" class="md-block">
+                <label>Δ.Ο.Υ:</label>
+                <md-select ng-model="c.data.company.doy">
+                    <md-option ng-repeat="d in c.doy" value="{{d}}">
+                        {{d}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container flex="30" class="md-block">
+                <label>Είδος Βιβλίων:</label>
+                <md-select ng-model="c.data.company.booksType">
+                    <md-option ng-repeat="b in c.books" value="{{b}}">
+                        {{b}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div layout="row" layout-align="space-around center">
+            <div layout="row" layout-align="center center" flex="45">
+                <md-input-container flex="90" class="md-block">
+                    <label>
+                        Μέγεθος Επιχείρησης:
+                    </label>
+                    <md-select ng-model="c.data.company.size">
+                        <md-option ng-repeat="cs in c.companySize" value="{{cs}}">
+                            {{cs}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-button flex="10" class="md-icon-button contentbtn" ng-click="c.showAlert(16)">
+                    <i style="display:block;text-align:center" class="material-icons">help</i>
+                </md-button>
+            </div>
+            <div layout="row" layout-align="center center" flex="45" ng-show="c.data.company.businessType==c.businessTypes[1]">
+                <md-input-container flex="90" class="md-block">
+                    <label>
+                        Αριθμός Κλεισμένων Διαχειριστικών Χρήσεων:
+                    </label>
+                    <md-select ng-model="c.data.company.nuberOfCompletedYears">
+                        <md-option ng-repeat="n in c.numbers" ng-value="{{n.value}}">
+                            {{n.label}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-button flex="10" class="md-icon-button contentbtn" ng-click="c.showAlert(15)">
+                    <i style="display:block;text-align:center" class="material-icons">help</i>
+                </md-button>
+            </div>
+        </div>
+        <div layout="row" layout-align="space-around center">
+            <md-input-container flex="90" class="md-block">
+                <label>Αντικείμενο Δραστηριότητας:</label>
+                <input ng-model="c.data.company.activity">
+            </md-input-container>
+        </div>
+    </div>
+</div>

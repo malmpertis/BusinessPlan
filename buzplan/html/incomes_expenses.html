@@ -1,0 +1,177 @@
+<div>
+    <h2>ΑΝΑΛΥΣΗ ΠΩΛΗΣΕΩΝ-ΕΣΟΔΩΝ ΚΑΙ ΕΞΟΔΩΝ ΣΕ ΒΑΘΟΣ ΤΡΙΕΤΙΑΣ</h2>
+    <hr />
+    <h3>ΕΣΟΔΑ</h3>
+    <table class="table">
+        <thead style="background-color:#3949AB;color:#D3D6EC;">
+            <tr>
+                <th>Όνομα Προϊόντος/Υπηρεσίας</th>
+                <th>Τιμή Προϊόντος ή υπηρεσίας</th>
+                <th>Τεκμηρίωση τιμής μονάδας</th>
+                <th>Προβλεπόμενη ποσότητα πωληθέντων 1ου έτους</th>
+                <th>Έσοδα 1ου έτους</th>
+                <th>Προβλεπόμενη ποσότητα πωληθέντων 2ου έτους</th>
+                <th>Έσοδα 2ου έτους</th>
+                <th>Προβλεπόμενη ποσότητα πωληθέντων 3ου έτους</th>
+                <th>Έσοδα 3ου έτους</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="income in c.data.incomes">
+                <td>
+                    <md-input-container class="md-block">
+                        <input aria-label="enter" type="text" ng-model="income.name" />
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container class="md-block">
+                        <input aria-label="enter" type="number" ng-model="income.value" />
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container class="md-block">
+                        <input aria-label="enter" type="text" ng-model="income.description" />
+                    </md-input-container>
+                </td>
+                <td>
+                    <md-input-container class="md-block">
+                        <input aria-label="enter" type="number" ng-model="income.predictionFirst" />
+                    </md-input-container>
+                </td>
+                <td><span />{{income.incomesFirstYear}}</td>
+                <td>
+                    <md-input-container class="md-block">
+                        <input aria-label="enter" type="number" ng-model="income.predictionSecond" />
+                    </md-input-container>
+                </td>
+                <td><span />{{income.incomesSecondYear}}</td>
+                <td>
+                    <md-input-container class="md-block">
+                        <input aria-label="enter" type="number" ng-model="income.predictionThird" />
+                    </md-input-container>
+                </td>
+                <td><span />{{income.incomesThirdYear}}</td>
+                <td>
+                    <md-button class="md-fab md-mini md-primary" ng-click="c.remove(c.data.incomes,$index)">
+                        <i style="display:block;text-align:center" class="material-icons">remove</i>
+                    </md-button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="10">
+                    <md-button class="md-fab md-mini md-primary" ng-click="c.add('incomes',{value:0,predictionFirst:0,predictionSecond:0,predictionThird:0})">
+                        <i style="display:block;text-align:center" class="material-icons">add</i>
+                    </md-button>
+            </tr>
+            <tr style="background-color:#EEEEEE;">
+                <th>Συνολικά Έσοδα (Πωλήσεις)</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{c.data.sumIncomesFirstYear}}</td>
+                <td></td>
+                <td>{{c.data.sumIncomesSecondYear}}</td>
+                <td></td>
+                <td>{{c.data.sumIncomesThirdYear}}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+    <!--ΔΑΠΑΝΕΣ-->
+    <h3>ΔΑΠΑΝΕΣ</h3>
+    <table class="table">
+        <thead style="background-color:#3949AB;color:#D3D6EC;">
+            <tr>
+                <th>Α/Α</th>
+                <th>ΚΑΤΗΓΟΡΙΑ ΔΑΠΑΝΗΣ</th>
+                <th>ΠΕΡΙΓΡΑΦΗ</th>
+                <th>Έξοδα 1ου έτους (€)</th>
+                <th>Έξοδα 2ου έτους (€)</th>
+                <th>Έξοδα 3ου έτους (€)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="expense in c.data.expenses">
+            <td ng-model="expense.index"><p>{{$index+1}}</p></td>
+            <td>
+                <!--<md-select ng-model="expense.category">
+                    <md-option ng-repeat="kat in c.katDapanes" value="{{kat}}">{{kat.name}}</md-option>
+                </md-select>-->
+                <select class="md-block" style="max-width:150px;min-width:150px;" ng-options="kat as kat.name for kat in c.katDapanes" ng-model="expense.category"></select>
+            </td>
+            <td>
+                <!--<md-select ng-model="expense.description">
+                    <md-option ng-repeat="value in expense.category.values" value="{{value}}">{{value}}</md-option>
+                </md-select>-->
+                <select class="md-block" style="max-width:150px;min-width:150px;" ng-options="value as value for value in expense.category.values" ng-model="expense.description"></select>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <input ng-model="expense.expensesFirst" type="number" />
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container>
+                    <input ng-model="expense.expensesSecond" type="number" />
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <input ng-model="expense.expensesThird" type="number" />
+                </md-input-container>
+            </td>
+            <td>
+                <md-button class="md-fab md-mini md-primary" ng-click="c.remove(c.data.expenses,$index)">
+                    <i style="display:block;text-align:center" class="material-icons">remove</i>
+                </md-button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <md-button class="md-fab md-mini md-primary" ng-click="c.add('expenses')">
+                    <i style="display:block;text-align:center" class="material-icons">add</i>
+                </md-button>
+            </td>
+        </tr>
+        <tr style="background-color:#EEEEEE;">
+            <th>Σύνολο Εξόδων</th>
+            <td></td>
+            <td></td>
+            <th>{{c.data.sumExpensesFirstYear}}</th>
+            <th>{{c.data.sumExpensesSecondYear}}</th>
+            <th>{{c.data.sumExpensesThirdYear}}</th>
+            <th></th>
+        </tr>
+
+    </table>
+    <hr />
+    <table>
+        <thead>
+            <tr>
+                <th>Σύνολο Εσόδων Εξόδων</th>
+            </tr>
+        </thead>
+        <tr>
+            <th>1ο έτος</th>
+            <td>€</td>
+        </tr>
+        <tr>
+            <th>2ο έτος</th>
+            <td>€</td>
+        </tr>
+        <tr>
+            <th>3ο έτος</th>
+            <td>€</td>
+        </tr>
+        <tr>
+            <th>%φορολόγησης κερδών</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>Καθαρά Κέρδη</th>
+            <td></td>
+        </tr>
+    </table>
+</div>

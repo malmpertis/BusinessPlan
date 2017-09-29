@@ -1,0 +1,52 @@
+<div>
+    <h2>ΕΠΙΧΕΙΡΗΜΑΤΙΚΟ ΣΧΕΔΙΟ - BUSINESS PLAN</h2>
+    <hr />
+    <!--<pre>{{c.data|json}}</pre>-->
+
+    <img ng-src="{{c.data.company.logo}}" alt="preview logo" style="margin:auto;max-height:150px; max-width:60%" /><br />
+    <md-input-container class="md-block">
+        <label>Εισάγετε το λογότυπο της επιχ/σης</label>
+        <input ng-model="c.data.company.logo">
+    </md-input-container>
+    <table>
+        <tr>
+            <td>Επωνυμία:</td>
+            <td>{{c.data.company.name}}</td>
+        </tr>
+        <tr>
+            <td>Διακριτικός Τίτλος:</td>
+            <td>{{c.data.company.title}}</td>
+        </tr>
+        <tr>
+            <td>Διεύθυνση:</td>
+            <td>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Διεύθυνση</label>
+                    <input ng-model="c.data.address">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td>Ημερομηνία Σύνταξης:</td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Ημερομηνία Σύνταξης</label>
+                    <md-datepicker ng-model="c.data.createDate"
+                                   md-current-view="year">
+                    </md-datepicker>
+                </md-input-container>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td>Disclaimer:</td>
+            <td>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.disclaimer">
+                </md-input-container>
+            </td>
+        </tr>
+    </table>
+</div>
