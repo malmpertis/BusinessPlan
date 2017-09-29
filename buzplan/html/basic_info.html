@@ -1,0 +1,184 @@
+<!--ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ ΣΕΛ.8-->
+<h2>
+    ΒΑΣΙΚΑ ΣΤΟΙΧΕΙΑ
+    <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(0)">
+        <i style="display:block;text-align:center" class="material-icons">help</i>
+    </md-button>
+</h2>
+
+<md-input-container class="md-block">
+    <label><span ng-show="c.data.company.businessType==c.businessTypes[1]">Σύντομο ιστορικό και στόχοι - όραμα της επιχείρησης</span><span ng-show="c.data.company.businessType==c.businessTypes[0]">Εισαγωγή σχεικά με τη γέννηση της επιχειρηματικής ιδέας και του οράματος του/των δυνητικού/ων επιχειρηματία/ων</span></label>
+    <textarea ng-model="c.data.company.basicInfo" md-maxlength="250" rows="5" md-select-on-focus></textarea>
+</md-input-container>
+<h2>ΕΔΡΑ ΤΗΣ ΕΠΙΧΕΙΡΗΣΗΣ
+    <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(1)">
+        <i style="display:block;text-align:center" class="material-icons">help</i>
+    </md-button>
+    </h2>
+<md-input-container class="md-block">
+    <label>Σύντομη περιγραφή της υφιστάμενης ή μελλοντικής έδρας και τυχόν παραρτημάτων της επιχείρησης</label>
+    <textarea ng-model="c.data.company.locationInfo" md-maxlength="250" rows="5" md-select-on-focus></textarea>
+</md-input-container>
+<h2>ΜΕΤΟΧΙΚΗ ΣΥΝΘΕΣΗ ΚΑΙ ΠΡΟΣΩΠΙΚΟ
+    <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(2)">
+        <i style="display:block;text-align:center" class="material-icons">help</i>
+    </md-button>
+    </h2>
+<md-input-container class="md-block">
+    <label>Περιγραφή του/των εταίρου / εταίρων</label>
+    <textarea ng-model="c.data.company.locationInfo" md-maxlength="250" rows="5" md-select-on-focus></textarea>
+</md-input-container>
+<table class="table" ng-show="c.data.company.businessType==c.businessTypes[1]">
+    <thead style="background-color:#3949AB;color:#D3D6EC;">
+        <tr>
+            <th>Έτος</th>
+            <th>Πλήθος Εργαζομένων</th>
+            <th>Επίπεδο Εκπαίδευσης</th>
+            <th>Ειδικότητα</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="background-color:#EEEEEE;">2017</td>
+            <td>
+                <md-input-container class="md-block">
+                    <input type="number" aria-label="2017" ng-model="c.data.company.year2017.employees">
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Επιλογή</label>
+                    <md-select ng-model="c.data.company.year2017.employeesEducation">
+                        <md-option ng-repeat="e in c.educationLevel" value="{{e}}">
+                            {{e}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Επιλογή</label>
+                    <md-select ng-model="c.data.company.year2017.employeesSpecialization">
+                        <md-option ng-repeat="s in c.specialty" value="{{s}}">
+                            {{s}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color:#EEEEEE;">2016</td>
+            <td>
+                <md-input-container class="md-block">
+                    <input type="number" aria-label="2016" ng-model="c.data.company.year2016.employees">
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Επιλογή</label>
+                    <md-select ng-model="c.data.company.year2016.employeesEducation">
+                        <md-option ng-repeat="e in c.educationLevel" value="{{e}}">
+                            {{e}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Επιλογή</label>
+                    <md-select ng-model="c.data.company.year2016.employeesSpecialization">
+                        <md-option ng-repeat="s in c.specialty" value="{{s}}">
+                            {{s}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color:#EEEEEE;">2015</td>
+            <td>
+                <md-input-container class="md-block">
+                    <input type="number" aria-label="2015" ng-model="c.data.company.year2015.employees">
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Επιλογή</label>
+                    <md-select ng-model="c.data.company.year2015.employeesEducation">
+                        <md-option ng-repeat="e in c.educationLevel" value="{{e}}">
+                            {{e}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Επιλογή</label>
+                    <md-select ng-model="c.data.company.year2015.employeesSpecialization">
+                        <md-option ng-repeat="s in c.specialty" value="{{s}}">
+                            {{s}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2>ΠΕΡΙΓΡΑΦΗ ΠΑΡΑΓΟΜΕΝΩΝ ΠΡΟΪΟΝΤΩΝ /ΥΠΗΡΕΣΙΩΝ
+    <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(3)">
+        <i style="display:block;text-align:center" class="material-icons">help</i>
+    </md-button>
+    </h2>
+<md-input-container class="md-block">
+    <label>Περιγράψτε αναλυτικά και με κατανοητό τρόπο τα προϊόντα/υπηρεσίες σας, τις ανάγκες που καλύπτουν, την ιδιαιτερότητα-πλεονεκτήματα τους σε σχέση με αυτά του ανταγωνισμού.</label>
+    <textarea ng-model="c.data.company.productsInfo" md-maxlength="250" rows="5" md-select-on-focus></textarea>
+</md-input-container>
+<h2>Η ΑΓΟΡΑ ΣΤΟΧΟΣ
+    <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(4)">
+        <i style="display:block;text-align:center" class="material-icons">help</i>
+    </md-button>
+    </h2>
+<md-input-container class="md-block">
+    <label>Αναφέρετε στοιχεία και τάσεις της τοπικής, εθνικής και διεθνούς αγοράς (στην οποία στοχεύετε).</label>
+    <textarea ng-model="c.data.company.targetsInfo" md-maxlength="250" rows="5" md-select-on-focus></textarea>
+</md-input-container>
+<h2>ΑΝΑΛΥΣΗ ΑΝΤΑΓΩΝΙΣΜΟΥ
+    <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(5)">
+        <i style="display:block;text-align:center" class="material-icons">help</i>
+    </md-button>
+    </h2>
+<md-input-container class="md-block">
+    <label>Αναφέρετε τους βασικούς ανταγωνιστές της επιχείρησης.</label>
+    <textarea ng-model="c.data.company.competitionAnalysis" md-maxlength="250" rows="5" md-select-on-focus></textarea>
+</md-input-container>
+<h2>ΑΝΑΛΥΣΗ SWOT (Δυναμεις, Αδυναμιες, Ευκαιριες και Απειλες)</h2>
+<table style="border: 1px solid black;text-align:center">
+    <tr>
+        <td>
+            <md-input-container>
+                <label>Δυνάμεις</label>
+                <input ng-model="c.data.company.swot.strengths">
+            </md-input-container>
+        </td>
+        <td>
+            <md-input-container>
+                <label>Αδυναμίες</label>
+                <input ng-model="c.data.company.swot.weaknesses">
+            </md-input-container>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <md-input-container>
+                <label>Ευκαιρίες</label>
+                <input ng-model="c.data.company.swot.opportunities">
+            </md-input-container>
+        </td>
+        <td>
+            <md-input-container>
+                <label>Απειλές</label>
+                <input ng-model="c.data.company.swot.threads">
+            </md-input-container>
+        </td>
+    </tr>
+</table>

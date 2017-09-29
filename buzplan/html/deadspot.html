@@ -1,0 +1,59 @@
+<div>
+    <h2>
+        ΥΠΟΛΟΓΙΣΜΟΣ ΝΕΚΡΟΥ ΣΗΜΕΙΟΥ
+        <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(12)">
+            <i style="display:block;text-align:center" class="material-icons">help</i>
+        </md-button>
+    </h2>
+    <hr>
+    <h3>Αναφέρετε:</h3>
+    <table>
+        <tr>
+            <td>Α.</td>
+            <td>Αναμενόμενο μοναδιαίο έσοδο προϊόντος/υπηρεσίας</td>
+            <td>
+                <md-input-container>
+                    <label>Τιμή</label>
+                    <input ng-model="c.data.company.ame" type="number" />
+                </md-input-container>
+        </tr>
+        <tr>
+            <td>Β.</td>
+            <td>
+                Μέσος όρος μοναδιαίου (μεταβλητού) κόστους προϊόντος/υπηρεσίας
+                <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(13)">
+                    <i style="display:block;text-align:center" class="material-icons">help</i>
+                </md-button>
+            </td>
+            <td>
+                <md-input-container>
+                    <label>Τιμή</label>
+                    <input ng-model="c.data.company.avc" type="number" />
+                </md-input-container>
+        </tr>
+        <tr>
+            <td>Γ.</td>
+            <td>
+                Εκτιμώμενα μηνιαία Σταθερά κόστη λειτουργίας επιχείρησης
+                <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(14)">
+                    <i style="display:block;text-align:center" class="material-icons">help</i>
+                </md-button>
+            </td>
+            <td>
+                <md-input-container>
+                    <label>Τιμή</label>
+                    <input ng-model="c.data.company.afc" type="number" />
+                </md-input-container>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>Ελάχιστες Μονάδες Νεκρού Σημείου</td>
+            <td><span ng-model="c.data.company.deadSpotMinimum" ng-bind="d=c.data.company.afc/(c.data.company.ame-c.data.company.avc)"></span></td>
+        </tr>
+        <tr>
+            <td>Πωλήσεις (σε ευρώ) ώστε να ξεκινήσει η επιχείρηση να έχει κέρδη:</td>
+            <td><span ng-model="c.data.company.salesNeeded" ng-bind="e=d*c.data.company.ame"></span>€</td>
+        </tr>
+    </table>
+</div>

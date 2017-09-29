@@ -1,0 +1,113 @@
+<div>
+    <h2 ng-show="c.data.company.businessType==c.businessTypes[1]">Στοιχεια Νομιμου Εκπροσωπου</h2><h2 ng-show="c.data.company.businessType==c.businessTypes[0]">Στοιχεια δυνητικου Επιχειρηματια</h2>
+    <table class="table">
+        <tr>
+            <th>ΕΠΩΝΥΜΟ</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.Lastname">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>ΟΝΟΜΑ</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.Firstname">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>Α.Φ.Μ.</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.afm">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>ΝΟΜΟΣ</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.County">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>ΟΔΟΣ </th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.Street">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>ΑΡΙΘΜΟΣ</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.StreetNumber">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>ΠΟΛΗ / ΤΟΠΟΘΕΣΙΑ</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.Ciy">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>ΤΑΧΥΔΡΟΜΙΚΟΣ ΚΩΔΙΚΑΣ / ΤΘ</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.PostalCode">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>ΤΗΛΕΦΩΝΟ (Σταθερό)</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.Phone">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>ΤΗΛΕΦΩΝΟ (Κινητό)</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.MobilePhone">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>FAX</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.owner.Fax">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th>e-mail</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input type="email" ng-model="c.data.owner.Email">
+                </md-input-container>
+            </td>
+        </tr>
+    </table>
+</div>

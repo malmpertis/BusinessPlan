@@ -1,0 +1,103 @@
+html, body {
+    background-color: #424242 !important;
+    height: 100%;
+}
+
+.sticky {
+    z-index: 100;
+    text-align: center;
+    background-color: #3949AB;
+    padding:10px;
+}
+
+.views {
+    margin: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    height: 100vh;
+}
+
+#infoTitles {
+    margin-bottom: 40px;
+}
+
+.main {
+    max-height: 100%;
+    overflow: auto;
+}
+
+.content {
+    margin: 20px;
+    height: 100%
+}
+
+.search {
+    position: absolute;
+    width: 500px;
+    z-index: 500;
+    background-color: #fff;
+    border: 1px solid black;
+    overflow-y: auto;
+}
+
+md-menu-item {
+    border-bottom: 1px solid #eaeaea;
+}
+
+md-menu-item:hover {
+    color: rgb(63, 81, 181);
+    background-color: #EEEEEE;
+}
+
+.contentbtn:hover {
+    color: rgb(63, 81, 181);
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+table {
+    /*margin: auto;*/
+    width: 100%;
+}
+
+.md-datepicker-input-container {
+    width: 250px!important;
+}
+
+.md-datepicker-calendar-pane.md-pane-open{
+    width:250px!important;
+}
+
+/*md-input-container:after {
+    content: '';
+    display: none!important;
+    clear: both;
+}*/
+
+#menuItems {
+    font-size: 14px;
+    cursor: pointer
+}
+
+
+md-toolbar {
+    background: #EEEEEE !important;
+    color: black;
+    color: rgba(0,0,0,0.87) !important;
+    margin-bottom: 15px !important;
+}
+
+.search div:hover {
+    background-color: #3F51B5;
+    color: white;
+    cursor: pointer;
+}
+
+md-input-container .md-errors-spacer {
+    min-width: 0 !important;
+    min-height: 0 !important;
+}
+
