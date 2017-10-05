@@ -32,5 +32,6 @@ namespace buzplan.Models
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<bp_kad> bp_kad { get; set; }
         public virtual DbSet<GeoCodes> GeoCodes { get; set; }
+        public virtual DbSet<PlanItems> PlanItems { get; set; }
     }
 }

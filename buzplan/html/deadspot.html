@@ -14,7 +14,7 @@
             <td>
                 <md-input-container>
                     <label>Τιμή</label>
-                    <input ng-model="c.data.company.ame" type="number" />
+                    <input ng-model="c.data.deadspot.ame" type="number" />
                 </md-input-container>
         </tr>
         <tr>
@@ -28,7 +28,7 @@
             <td>
                 <md-input-container>
                     <label>Τιμή</label>
-                    <input ng-model="c.data.company.avc" type="number" />
+                    <input ng-model="c.data.deadspot.avc" type="number" />
                 </md-input-container>
         </tr>
         <tr>
@@ -42,18 +42,18 @@
             <td>
                 <md-input-container>
                     <label>Τιμή</label>
-                    <input ng-model="c.data.company.afc" type="number" />
+                    <input ng-model="c.data.deadspot.afc" type="number" />
                 </md-input-container>
         </tr>
     </table>
     <table>
         <tr>
             <td>Ελάχιστες Μονάδες Νεκρού Σημείου</td>
-            <td><span ng-model="c.data.company.deadSpotMinimum" ng-bind="d=c.data.company.afc/(c.data.company.ame-c.data.company.avc)"></span></td>
+            <td><span >{{c.data.deadspot.deadSpotMinimum = c.data.deadspot.afc/(c.data.deadspot.ame-c.data.deadspot.avc)||0}}€</span></td>
         </tr>
         <tr>
             <td>Πωλήσεις (σε ευρώ) ώστε να ξεκινήσει η επιχείρηση να έχει κέρδη:</td>
-            <td><span ng-model="c.data.company.salesNeeded" ng-bind="e=d*c.data.company.ame"></span>€</td>
+            <td><span>{{c.data.deadspot.salesNeeded = c.data.deadspot.deadSpotMinimum*c.data.deadspot.ame||0}}€</span></td>
         </tr>
     </table>
 </div>

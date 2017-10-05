@@ -4,12 +4,12 @@
     <hr>
     <p class="sticky" style="{{c.total>=90?'color:red;':'color:#D3D6EC'}}">Σύνολο Μετόχων: <strong>{{c.getTotal()}}%</strong></p>
     <div ng-repeat="partner in c.data.partners">
-        <table>
-            <thead>
+        <table class="table">
+            <thead style="background-color:#EDEDED">
                 <tr>
-                    <th>ΠΟΣΟΣΤΟ (%)</th>
+                    <th>ΠΟΣΟΣΤΟ (%)&nbsp;<span style="{{c.total>=90?'color:red;':'color:#D3D6EC'}}">Σύνολο Μετόχων: <strong>{{c.getTotal()}}%</strong></span></th>
                     <th>ΟΝΟΜΑΤΕΠΩΝΥΜΟ Ή ΕΠΩΝΥΜΙΑ</th>
-                    <th>ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>
+                    <!--<th>ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>-->
                     <th><md-button class="md-fab md-mini md-primary" ng-click="c.remove(c.data.partners,$index)"><i style="display:block;text-align:center" class="material-icons">remove</i></md-button></th>
                 </tr>
             </thead>
@@ -24,6 +24,19 @@
                         <label>Εισαγωγή</label>
                         <input ng-model="partner.name">
                     </md-input-container>
+                <!--<td>
+                    <md-input-container class="md-block">
+                        <label>Επιλογή</label>
+                        <md-select ng-model="partner.type">
+                            <md-option ng-repeat="p in c.partnerType" value="{{p}}">
+                                {{p}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </td>-->
+            </tr>
+            <tr>
+                <th style="background-color:#EDEDED">ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>
                 <td>
                     <md-input-container class="md-block">
                         <label>Επιλογή</label>
@@ -36,7 +49,7 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>ΜΕΤΟΧΟΣ ΕΚΤΟΣ ΕΛΛΑΔΟΣ</strong></td>
+                <td style="background-color:#EDEDED"><strong>ΜΕΤΟΧΟΣ ΕΚΤΟΣ ΕΛΛΑΔΟΣ</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Ναι/Όχι</label>
@@ -52,7 +65,7 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>Α.Φ.Μ. / V.A.T. (ΕΚΤΟΣ ΕΛΛΑΔΟΣ)</strong></td>
+                <td style="background-color:#EDEDED"><strong>Α.Φ.Μ. / V.A.T. (ΕΚΤΟΣ ΕΛΛΑΔΟΣ)</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>
@@ -60,7 +73,7 @@
                     </md-input-container>
             </tr>
             <tr>
-                <td><strong>Δ.Ο.Υ</strong></td>
+                <td style="background-color:#EDEDED"><strong>Δ.Ο.Υ</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Επιλογή από Λίστα ΔΟΥ</label>
@@ -72,24 +85,15 @@
                     </md-input-container>
             </tr>
             <tr>
-                <td><strong>e-mail</strong></td>
+                <td style="background-color:#EDEDED"><strong>e-mail</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>
                         <input ng-model="partner.email">
                     </md-input-container>
             </tr>
-            <tr>
-                <!--DIEFKRINISIIIIIIIIIII-->
-                <td><strong>ΕΤΟΣ ΙΔΡΥΣΗΣ ΕΠΙΧΕΙΡΗΣΗΣ</strong></td>
-                <td>
-                    <md-input-container class="md-block">
-                        <label>Εισαγωγή</label>
-                        <input type="number" min="1900" max="2030" ng-model="partner.dateOfEstablishment">
-                    </md-input-container>
-            </tr>
             <tr ng-show="partner.type=='ΝΟΜΙΚΟ ΠΡΟΣΩΠΟ'">
-                <td><strong>Α.Φ.Μ. ΝΟΜΙΜΟΥ ΕΚΠΡΟΣΩΠΟΥ</strong></td>
+                <td style="background-color:#EDEDED"><strong>Α.Φ.Μ. ΝΟΜΙΜΟΥ ΕΚΠΡΟΣΩΠΟΥ</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>
@@ -98,16 +102,14 @@
                 </td>
             </tr>
             <tr ng-show="partner.type=='ΦΥΣΙΚΟ ΠΡΟΣΩΠΟ'">
-                <td><strong>ΘΕΣΗ ΕΤΑΙΡΟΥ/ΜΕΤΟΧΟΥ ΣΤΟΝ ΦΟΡΕΑ</strong></td>
+                <td style="background-color:#EDEDED"><strong>ΘΕΣΗ ΕΤΑΙΡΟΥ/ΜΕΤΟΧΟΥ ΣΤΟΝ ΦΟΡΕΑ</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>
                         <input ng-model="partner.position">
                     </md-input-container>
             </tr>
-            <tr>
-                <td></td>
-            </tr>
+            
         </table>
         <table>
             <tr>
@@ -118,7 +120,7 @@
                 <td>
                     <md-input-container class="md-block">
                         <label>Ναι/Όχι</label>
-                        <md-select ng-model="parnter.isMemberOtherCompanies" value="{{parnter.isMemberOtherCompanies}}">
+                        <md-select ng-model="partner.isMemberOtherCompanies" >
                             <md-option value="yes">
                                 Ναι
                             </md-option>
@@ -130,12 +132,12 @@
                 </td>
             </tr>
         </table>
-        <table ng-show="parnter.isMemberOtherCompanies=='yes'">
-            <thead>
+        <table class="table" style="max-width:70%; margin: auto;" ng-show="partner.isMemberOtherCompanies=='yes'">
+            <thead style="background-color:#EDEDED">
                 <tr>
                     <th>ΠΟΣΟΣΤΟ%</th>
                     <th>ΟΝΟΜΑΤΕΠΩΝΥΜΟ Ή ΕΠΩΝΥΜΙΑ</th>
-                    <th>ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>
+                    <!--<th>ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>-->
                 </tr>
             </thead>
             <tr>
@@ -151,6 +153,19 @@
                         <input ng-model="partner.otherCompany.nameOrTitle">
                     </md-input-container>
                 </td>
+                <!--<td>
+                    <md-input-container class="md-block">
+                        <label>Επιλογή από Λίστα</label>
+                        <md-select ng-model="partner.otherCompany.typeOfPerson">
+                            <md-option ng-repeat="p in c.partnerType" value="{{p}}">
+                                {{p}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </td>-->
+            </tr>
+            <tr>
+                <th style="background-color:#EDEDED">ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</thstyle="background-color:#EDEDED">
                 <td>
                     <md-input-container class="md-block">
                         <label>Επιλογή από Λίστα</label>
@@ -163,7 +178,7 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>ΧΩΡΑ ΕΓΚΑΤΑΣΤΑΣΗΣ/ΔΙΑΜΟΝΗΣ</strong></td>
+                <td style="background-color:#EDEDED"><strong>ΧΩΡΑ ΕΓΚΑΤΑΣΤΑΣΗΣ/ΔΙΑΜΟΝΗΣ</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>
@@ -172,35 +187,32 @@
                 </td>
             </tr>
             <tr>
-                <td rowspan="3"><strong>ΔΙΕΥΘΥΝΣΗ ΕΔΡΑΣ</strong></td>
-                <td><strong>ΟΔΟΣ - ΑΡΙΘΜΟΣ</strong></td>
+                <td rowspan="3" style="background-color:#EDEDED"><strong>ΔΙΕΥΘΥΝΣΗ ΕΔΡΑΣ</strong></td>
                 <td>
                     <md-input-container class="md-block">
-                        <label>Εισαγωγή</label>
+                        <label>ΟΔΟΣ - ΑΡΙΘΜΟΣ</label>
                         <input ng-model="partner.otherCompany.address">
                     </md-input-container>
                 </td>
             </tr>
             <tr>
-                <td><strong>ΠΟΛΗ</strong></td>
                 <td>
                     <md-input-container class="md-block">
-                        <label>Εισαγωγή</label>
+                        <label>ΠΟΛΗ</label>
                         <input ng-model="partner.otherCompany.city">
                     </md-input-container>
                 </td>
             </tr>
             <tr>
-                <td><strong>ΤΑΧ. ΚΩΔΙΚΑΣ</strong></td>
                 <td>
                     <md-input-container class="md-block">
-                        <label>Εισαγωγή</label>
+                        <label>ΤΑΧ. ΚΩΔΙΚΑΣ</label>
                         <input ng-model="partner.otherCompany.postalCode">
                     </md-input-container>
                 </td>
             </tr>
             <tr>
-                <td><strong>ΤΗΛΕΦΩΝΟ ΕΠΙΚΟΙΝΩΝΙΑΣ</strong></td>
+                <td style="background-color:#EDEDED"><strong>ΤΗΛΕΦΩΝΟ ΕΠΙΚΟΙΝΩΝΙΑΣ</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>
@@ -209,7 +221,7 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>FAX</strong></td>
+                <td style="background-color:#EDEDED"><strong>FAX</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>
@@ -218,7 +230,7 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>e-mail</strong></td>
+                <td style="background-color:#EDEDED"><strong>e-mail</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>
@@ -227,7 +239,7 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>ΘΕΣΗ ΕΤΑΙΡΟΥ/ΜΕΤΟΧΟΥ ΣΤΟΝ ΦΟΡΕΑ</strong></td>
+                <td style="background-color:#EDEDED"><strong>ΘΕΣΗ ΕΤΑΙΡΟΥ/ΜΕΤΟΧΟΥ ΣΤΟΝ ΦΟΡΕΑ</strong></td>
                 <td>
                     <md-input-container class="md-block">
                         <label>Εισαγωγή</label>

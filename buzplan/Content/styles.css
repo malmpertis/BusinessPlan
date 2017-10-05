@@ -1,6 +1,6 @@
 html, body {
-    background-color: #424242 !important;
-    height: 100%;
+    background-color: #BDBDBD !important;
+    height: 100vh!important;
 }
 
 .sticky {
@@ -11,7 +11,7 @@ html, body {
 }
 
 .views {
-    margin: 20px;
+    margin: 10px;
     padding: 5px;
     border-radius: 5px;
     height: 100vh;
@@ -59,8 +59,11 @@ h2 {
 }
 
 table {
-    /*margin: auto;*/
     width: 100%;
+}
+
+.table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
+    vertical-align: middle !important;
 }
 
 .md-datepicker-input-container {
@@ -71,23 +74,14 @@ table {
     width:250px!important;
 }
 
-/*md-input-container:after {
-    content: '';
-    display: none!important;
-    clear: both;
-}*/
-
 #menuItems {
     font-size: 14px;
     cursor: pointer
 }
 
-
 md-toolbar {
-    background: #EEEEEE !important;
-    color: black;
-    color: rgba(0,0,0,0.87) !important;
-    margin-bottom: 15px !important;
+    background: #3F51B5 !important;
+    color: #D3D6EC !important;
 }
 
 .search div:hover {

@@ -10,14 +10,12 @@
                 <i style="display:block;text-align:center" class="material-icons">menu</i>
             </md-button>
         </h1>
-        
     </md-toolbar>
     <md-content>
-        <md-menu-item ng-style="c.active" ng-repeat="s in c.sections" ng-click="c.changeActive(s.id)">
-            <md-button ng-disabled="s.isDisabled&&s.isDisabled()">
+        <md-menu-item ng-repeat="s in c.sections" ng-click="c.changeActive(s.id)">
+            <md-button style="{{s.id==c.activeSection? 'background-color:#EEEEEE;color:#4152B3': ''}}" ng-disabled="s.isDisabled&&s.isDisabled()">
                 {{s.desc}}
             </md-button>
         </md-menu-item>
-        
     </md-content>
 </md-sidenav>
