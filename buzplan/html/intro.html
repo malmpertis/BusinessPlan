@@ -2,51 +2,62 @@
     <h2>ΕΠΙΧΕΙΡΗΜΑΤΙΚΟ ΣΧΕΔΙΟ - BUSINESS PLAN</h2>
     <hr />
     <!--<pre>{{c.data|json}}</pre>-->
-
-    <img ng-src="{{c.data.company.logo}}" alt="preview logo" style="margin:auto;max-height:150px; max-width:60%" /><br />
-    <md-input-container class="md-block">
-        <label>Εισάγετε το λογότυπο της επιχ/σης</label>
-        <input ng-model="c.data.company.logo">
-    </md-input-container>
-    <table>
-        <tr>
-            <td>Επωνυμία:</td>
-            <td>{{c.data.company.name}}</td>
-        </tr>
-        <tr>
-            <td>Διακριτικός Τίτλος:</td>
-            <td>{{c.data.company.title}}</td>
-        </tr>
-        <tr>
-            <td>Διεύθυνση:</td>
-            <td>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Διεύθυνση</label>
-                    <input ng-model="c.data.address">
-                </md-input-container>
-            </td>
-        </tr>
-        <tr>
-            <td>Ημερομηνία Σύνταξης:</td>
-            <td>
-                <md-input-container class="md-block">
-                    <label>Ημερομηνία Σύνταξης</label>
-                    <md-datepicker ng-model="c.data.createDate"
-                                   md-current-view="year">
-                    </md-datepicker>
-                </md-input-container>
-        </tr>
+    <img ng-src="{{c.data.company.logo}}" alt="preview logo" style="display:block;margin:auto;max-height:300px; max-width:300px" /><br />
+    <table class="table">
+        <thead style="background-color:#3949AB;color:#D3D6EC;">
+            <tr>
+                <th>Στοιχεία Επιχείρησης</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Επωνυμία:</td>
+                <td>{{c.data.company.name}}</td>
+            </tr>
+            <tr>
+                <td>Διακριτικός Τίτλος:</td>
+                <td>{{c.data.company.title}}</td>
+            </tr>
+            <tr>
+                <td>Διεύθυνση:</td>
+                <td>
+                    {{c.data.company.Adress}}, {{c.data.company.Location}}, {{c.data.company.PostalCode}}
+                </td>
+            </tr>
+            <tr>
+                <td>Ημερομηνία Σύνταξης:</td>
+                <td>
+                    <md-input-container class="md-block">
+                        <label>Ημερομηνία Σύνταξης</label>
+                        <md-datepicker ng-model="c.data.createDate"
+                                       md-current-view="year">
+                        </md-datepicker>
+                    </md-input-container>
+                </td>
+            </tr>
+            <tr>
+                <td>Λογότυπο Επιχείρησης:</td>
+                <td>
+                    <md-button class="md-raised md-primary" ng-click="c.uploadImage()">Επιλογη Αρχειου</md-button>
+                </td>
+            </tr>
+        </tbody>
     </table>
-
-    <table>
-        <tr>
-            <td>Disclaimer:</td>
-            <td>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Εισαγωγή</label>
-                    <input ng-model="c.data.disclaimer">
-                </md-input-container>
-            </td>
-        </tr>
+    <table class="table">
+        <thead style="background-color:#3949AB;color:#D3D6EC;">
+            <tr>
+                <th>Disclaimer:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <md-input-container class="md-block">
+                        <label>Εισαγωγή</label>
+                        <textarea ng-model="c.data.disclaimer" rows="5" md-select-on-focus></textarea>
+                    </md-input-container>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>

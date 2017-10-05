@@ -15,6 +15,8 @@
         <AssociationConnector Association="businessPlanModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="businessPlanModel.AspNetUserRoles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="businessPlanModel.GeoCodes" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="businessPlanModel.PlanItems" Width="1.5" PointX="5.25" PointY="10.5" />
+        <AssociationConnector Association="businessPlanModel.FK_PlanItems_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

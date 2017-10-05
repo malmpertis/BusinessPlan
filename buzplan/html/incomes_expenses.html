@@ -96,30 +96,35 @@
         <tr ng-repeat="expense in c.data.expenses">
             <td ng-model="expense.index"><p>{{$index+1}}</p></td>
             <td>
-                <!--<md-select ng-model="expense.category">
-                    <md-option ng-repeat="kat in c.katDapanes" value="{{kat}}">{{kat.name}}</md-option>
-                </md-select>-->
-                <select class="md-block" style="max-width:150px;min-width:150px;" ng-options="kat as kat.name for kat in c.katDapanes" ng-model="expense.category"></select>
+                <md-input-container class="md=block">
+                    <md-select aria-label="category" ng-model="expense.category">
+                        <md-option ng-repeat="(kat, cat) in c.katDapanes" value="{{kat}}">{{kat}}</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <!--<select class="md-block" style="max-width:150px;min-width:150px;" ng-options="kat as kat.name for kat in c.katDapanes" ng-model="expense.category"></select>-->
             </td>
             <td>
-                <!--<md-select ng-model="expense.description">
-                    <md-option ng-repeat="value in expense.category.values" value="{{value}}">{{value}}</md-option>
-                </md-select>-->
-                <select class="md-block" style="max-width:150px;min-width:150px;" ng-options="value as value for value in expense.category.values" ng-model="expense.description"></select>
+                <md-input-container class="md=block">
+                    <md-select aria-label="desc" ng-model="expense.description">
+                        <md-option ng-repeat="value in c.katDapanes[expense.category]" value="{{value}}">{{value}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <!--<select class="md-block" style="max-width:150px;min-width:150px;" ng-options="value as value for value in expense.category.values" ng-model="expense.description"></select>-->
             </td>
             <td>
                 <md-input-container class="md-block">
-                    <input ng-model="expense.expensesFirst" type="number" />
+                    <input aria-label="category" ng-model="expense.expensesFirst" type="number" />
                 </md-input-container>
             </td>
             <td>
-                <md-input-container>
-                    <input ng-model="expense.expensesSecond" type="number" />
+                <md-input-container aria-label="category" class="md-block">
+                    <input aria-label="category" ng-model="expense.expensesSecond" type="number" />
                 </md-input-container>
             </td>
             <td>
-                <md-input-container class="md-block">
-                    <input ng-model="expense.expensesThird" type="number" />
+                <md-input-container aria-label="category" class="md-block">
+                    <input aria-label="category" ng-model="expense.expensesThird" type="number" />
                 </md-input-container>
             </td>
             <td>
@@ -147,31 +152,49 @@
 
     </table>
     <hr />
-    <table>
-        <thead>
-            <tr>
-                <th>Σύνολο Εσόδων Εξόδων</th>
-            </tr>
-        </thead>
+    <table class="table">
+        <tr style="background-color:#3949AB;color:#D3D6EC;">
+            <th>Σύνολο Εσόδων Εξόδων</th>
+            <th></th>
+        </tr>
         <tr>
             <th>1ο έτος</th>
-            <td>€</td>
+            <td>{{c.data.IncomeMinusExpenseFirst = c.data.sumIncomesFirstYear-c.data.sumExpensesFirstYear||0}}</td>
         </tr>
         <tr>
             <th>2ο έτος</th>
-            <td>€</td>
+            <td>{{c.data.IncomeMinusExpenseSecond = c.data.sumIncomesSecondYear-c.data.sumExpensesSecondYear||0}}</td>
         </tr>
         <tr>
             <th>3ο έτος</th>
-            <td>€</td>
+            <td>{{c.data.IncomeMinusExpenseThird = c.data.sumIncomesThirdYear-c.data.sumExpensesThirdYear||0}}</td>
         </tr>
         <tr>
-            <th>%φορολόγησης κερδών</th>
-            <td></td>
+            <th>Φορολόγηση Κερδών</th>
+            <td>
+                <md-input-container >
+                    <label>Ποσοστό Φορολογίας</label>
+                    <md-select ng-model="c.data.tax">
+                        <md-option ng-repeat="tax in c.taxes" ng-value="tax.percentage">
+                            {{tax.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
         </tr>
+    </table>
+    <table class="table">
         <tr>
             <th>Καθαρά Κέρδη</th>
+            <th>Πρώτο Έτος</th>
+            <th>Δεύτερο Έτος</th>
+            <th>Τρίτο Έτος</th>
+        </tr>
+        <tr>
             <td></td>
+            <td>{{c.data.profitFirstYear = c.data.IncomeMinusExpenseFirst-c.data.IncomeMinusExpenseFirst*c.data.tax||'Ελλιπή Στοιχεία'}}</td>
+            <td>{{c.data.profitSecondYear = c.data.IncomeMinusExpenseSecond-c.data.IncomeMinusExpenseSecond*c.data.tax||'Ελλιπή Στοιχεία'}}</td>
+            <td>{{c.data.profitThirdYear = c.data.IncomeMinusExpenseThird-c.data.IncomeMinusExpenseThird*c.data.tax||'Ελλιπή Στοιχεία'}}</td>
         </tr>
     </table>
 </div>

@@ -195,6 +195,7 @@
     <Compile Include="Controllers\GeoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PlanItems.cs">
+      <DependentUpon>model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectClasses\ObjectClasses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -251,7 +256,7 @@
     <Content Include="html\basic_info.html" />
     <Content Include="html\companyId.html" />
     <Content Include="html\contents.html" />
-    <Content Include="html\css\styles.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="html\deadspot.html" />
     <Content Include="html\debug.html" />
     <Content Include="html\economicSituation.html" />
@@ -259,18 +264,14 @@
     <Content Include="html\incomes_expenses.html" />
     <Content Include="html\index.html" />
     <Content Include="html\intro.html" />
-    <Content Include="html\js\angular-chart.js" />
-    <Content Include="html\js\Chart.min.js" />
-    <Content Include="html\js\controller.js" />
-    <Content Include="html\js\GeoFactory.js" />
-    <Content Include="html\js\ng-app.js" />
+    <Content Include="js\controller.js" />
+    <Content Include="js\GeoFactory.js" />
     <Content Include="html\kad.html" />
     <Content Include="html\marketing.html" />
     <Content Include="html\owner.html" />
     <Content Include="html\partners.html" />
     <Content Include="js\angular-chart.js" />
     <Content Include="js\Chart.min.js" />
-    <Content Include="js\controller.js" />
     <Content Include="js\ng-app.js" />
     <Content Include="Models\model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -344,6 +345,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Geo\" />
     <Folder Include="Views\html\" />
+    <Folder Include="Views\Plan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

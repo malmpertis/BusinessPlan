@@ -3,10 +3,10 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
-    <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.css">
+    <link href="../Content/styles.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.css">
 </head>
 <body ng-app="app" ng-controller="controller as c" layout="row">
 
@@ -44,16 +44,20 @@
     <!--Scripts-->
     <div>
         <!--Dependencies-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/el.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-aria.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
-        <script src="js/Chart.min.js"></script>
-        <script src="js/angular-chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.1.0/angular-moment.min.js"></script>
+        <script src="../js/Chart.min.js"></script>
+        <script src="../js/angular-chart.js"></script>
+
         <!--Controllers and Factories-->
-        <script src="js/controller.js"></script>
+        <script src="../js/controller.js"></script>
     </div>
 </body>
 </html>
