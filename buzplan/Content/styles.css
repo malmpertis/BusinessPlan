@@ -1,6 +1,33 @@
 html, body {
-    background-color: #BDBDBD !important;
-    height: 100vh!important;
+    background-color: #BDBDBD;
+    height: 100%;
+    font-family: 'Roboto', sans-serif!important;
+    /*zoom: 90%;*/
+}
+
+.md-tooltip {
+    font-size: 12pt !important;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+#title{
+    text-align:center;
+}
+
+#table_head {
+    background-color: #3949AB;
+    color: #D3D6EC;
+}
+
+#table_content {
+    background-color: #EEEEEE;
+}
+
+#table_result {
+    background-color: #CFD8DC;;
 }
 
 .sticky {
@@ -14,7 +41,7 @@ html, body {
     margin: 10px;
     padding: 5px;
     border-radius: 5px;
-    height: 100vh;
+    height: 100%;
 }
 
 #infoTitles {
@@ -58,10 +85,6 @@ h2 {
     text-transform: uppercase;
 }
 
-table {
-    width: 100%;
-}
-
 .table thead > tr > th, .table tbody > tr > th, .table tfoot > tr > th, .table thead > tr > td, .table tbody > tr > td, .table tfoot > tr > td {
     vertical-align: middle !important;
 }
@@ -80,7 +103,7 @@ table {
 }
 
 md-toolbar {
-    background: #3F51B5 !important;
+    background: #3F51B5;
     color: #D3D6EC !important;
 }
 

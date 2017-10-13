@@ -2,48 +2,48 @@
 <div>
     <h3 style="text-align:center">ΣΤΟΙΧΕΙΑ ΤΑΥΤΟΤΗΤΑΣ ΕΠΙΧΕΙΡΗΣΗΣ</h3>
     <hr />
-    <table id="address" style="margin:auto">
+    <table style="width:90%;margin:auto" class="table">
         <tr>
-            <th>ΠΕΡΙΦΕΡΕΙΑ: </th>
+            <th style="background-color:#EEEEEE;">ΠΕΡΙΦΕΡΕΙΑ: </th>
             <td>
                 <md-input-container class="md-block">
                     <label>Επιλογή</label>
                     <md-select ng-model="c.data.company.District">
-                        <md-option value="test">
-                            test
+                        <md-option ng-repeat="g1 in c.geo1" value="{{g1.Place}}">
+                            {{g1.Place}}
                         </md-option>
                     </md-select>
                 </md-input-container>
             </td>
         </tr>
         <tr>
-            <th>ΠΕΡΙΦΕΡΕΙΑΚΗ ΕΝΟΤΗΤΑ: </th>
+            <th style="background-color:#EEEEEE;">ΠΕΡΙΦΕΡΕΙΑΚΗ ΕΝΟΤΗΤΑ: </th>
             <td>
                 <md-input-container class="md-block">
                     <label>Επιλογή</label>
-                    <md-select ng-model="c.data.company.RegionalUnity">
-                        <md-option value="test">
-                            test
+                    <md-select ng-disabled="!c.data.company.District" ng-model="c.data.company.RegionalUnity">
+                        <md-option ng-repeat="g1 in c.geo2 | filter: {Parent:c.data.company.District}" value="{{g1.Place}}">
+                            {{g1.Place}}
                         </md-option>
                     </md-select>
                 </md-input-container>
             </td>
         </tr>
         <tr>
-            <th>ΔΗΜΟΣ – ΚΟΙΝΟΤΗΤΑ: </th>
+            <th style="background-color:#EEEEEE;">ΔΗΜΟΣ – ΚΟΙΝΟΤΗΤΑ: </th>
             <td>
                 <md-input-container class="md-block">
                     <label>Επιλογή</label>
-                    <md-select ng-model="c.data.company.Commune">
-                        <md-option value="test">
-                            test
+                    <md-select ng-disabled="!c.data.company.RegionalUnity" ng-model="c.data.company.Commune">
+                        <md-option ng-repeat="g1 in c.geo3 | filter: {Parent: c.data.company.RegionalUnity}" value="{{g1.Place}}">
+                            {{g1.Place}}
                         </md-option>
                     </md-select>
                 </md-input-container>
             </td>
         </tr>
-        <tr>
-            <th>ΔΗΜΟΤΙΚΟ ΔΙΑΜΕΡΙΣΜΑ: </th>
+        <!--<tr>
+            <th style="background-color:#EEEEEE;">ΔΗΜΟΤΙΚΟ ΔΙΑΜΕΡΙΣΜΑ: </th>
             <td>
                 <md-input-container class="md-block">
                     <label>Επιλογή</label>
@@ -54,37 +54,34 @@
                     </md-select>
                 </md-input-container>
             </td>
-        </tr>
+        </tr>-->
         <tr>
-            <th rowspan="3">ΔΙΕΥΘΥΝΣΗ ΕΔΡΑΣ: </th>
-            <th style="text-align:right;">ΟΔΟΣ – ΑΡΙΘΜΟΣ:</th>
+            <th  style="background-color:#EEEEEE;" rowspan="3">ΔΙΕΥΘΥΝΣΗ ΕΔΡΑΣ: </th>
             <td>
                 <md-input-container class="md-block">
-                    <label>Εισαγωγή</label>
+                    <label>ΟΔΟΣ – ΑΡΙΘΜΟΣ</label>
                     <input ng-model="c.data.company.Adress">
                 </md-input-container>
             </td>
         </tr>
         <tr>
-            <th style="text-align:right;">ΤΟΠΟΘΕΣΙΑ: </th>
             <td>
                 <md-input-container class="md-block">
-                    <label>Εισαγωγή</label>
+                    <label>ΤΟΠΟΘΕΣΙΑ</label>
                     <input ng-model="c.data.company.Location">
                 </md-input-container>
             </td>
         </tr>
         <tr>
-            <th style="text-align:right;">ΤΑΧ. ΚΩΔΙΚΟΣ: </th>
             <td>
                 <md-input-container class="md-block">
-                    <label>Εισαγωγή</label>
+                    <label>ΤΑΧ. ΚΩΔΙΚΟΣ</label>
                     <input ng-model="c.data.company.PostalCode">
                 </md-input-container>
             </td>
         </tr>
         <tr>
-            <th>ΤΗΛΕΦΩΝΟ ΕΠΙΚΟΙΝΩΝΙΑΣ: </th>
+            <th style="background-color:#EEEEEE;">ΤΗΛΕΦΩΝΟ ΕΠΙΚΟΙΝΩΝΙΑΣ: </th>
             <td>
                 <md-input-container class="md-block">
                     <label>Εισαγωγή</label>
@@ -93,7 +90,7 @@
             </td>
         </tr>
         <tr>
-            <th>FAX: </th>
+            <th style="background-color:#EEEEEE;">FAX: </th>
             <td>
                 <md-input-container class="md-block">
                     <label>Εισαγωγή</label>
@@ -102,7 +99,7 @@
             </td>
         </tr>
         <tr>
-            <th>Ιστοσελίδα (Website)</th>
+            <th style="background-color:#EEEEEE;">Ιστοσελίδα (Website)</th>
             <td>
                 <md-input-container class="md-block">
                     <label>Εισαγωγή</label>
@@ -111,7 +108,7 @@
             </td>
         </tr>
         <tr>
-            <th>Ηλεκτρονική Διεύθυνση (e-mail): </th>
+            <th style="background-color:#EEEEEE;">Ηλεκτρονική Διεύθυνση (e-mail): </th>
             <td>
                 <md-input-container class="md-block">
                     <label>Εισαγωγή</label>

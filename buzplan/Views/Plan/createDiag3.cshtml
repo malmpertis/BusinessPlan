@@ -1,0 +1,26 @@
+﻿@model buzplan.ObjectClasses.Plan
+@{
+    var myChart = new Chart(width: 900, height: 450)
+        .AddLegend(name: "Δείκτης οικονομικής μόχλευσης")
+        .AddLegend(name: "Δείκτης γενικής ρευστότητας")
+        .AddLegend(name: "Δείκτης ταχύτητας κυκλοφορίας ενεργητικού")
+        .AddSeries(
+            chartType: "Column",
+            name: "Δείκτης οικονομικής μόχλευσης",
+            xValue: Model.xronia,
+            yValues: Model.totals[17].values)
+        .AddSeries(
+            chartType: "Column",
+            name: "Δείκτης γενικής ρευστότητας",
+            xValue: Model.xronia,
+            yValues: Model.totals[15].values)
+        .AddSeries(
+            chartType: "Column",
+            name: "Δείκτης ταχύτητας κυκλοφορίας ενεργητικού",
+            xValue: Model.xronia,
+            yValues: Model.totals[14].values
+            )
+        .SetXAxis(title:"Έτος", min: Model.xronia.Min()-1, max: Model.xronia.Max()+1 )
+        .SetYAxis(title:"Ποσοστό (%)")
+        .Write();
+}

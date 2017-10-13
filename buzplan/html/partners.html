@@ -2,15 +2,15 @@
     <!--ΣΤΟΙΧΕΙΑ ΕΤΑΙΡΩΝ/ΜΕΤΟΧΩΝ-->
     <h2>Στοιχεια Εταιρων/Μετοχων</h2>
     <hr>
-    <p class="sticky" style="{{c.total>=90?'color:red;':'color:#D3D6EC'}}">Σύνολο Μετόχων: <strong>{{c.getTotal()}}%</strong></p>
+    <!--<p class="sticky" style="{{c.total>=90?'color:red;':'color:#D3D6EC'}}">Σύνολο Μετόχων: <strong>{{c.getTotal()}}%</strong></p>-->
     <div ng-repeat="partner in c.data.partners">
         <table class="table">
             <thead style="background-color:#EDEDED">
-                <tr>
-                    <th>ΠΟΣΟΣΤΟ (%)&nbsp;<span style="{{c.total>=90?'color:red;':'color:#D3D6EC'}}">Σύνολο Μετόχων: <strong>{{c.getTotal()}}%</strong></span></th>
-                    <th>ΟΝΟΜΑΤΕΠΩΝΥΜΟ Ή ΕΠΩΝΥΜΙΑ</th>
-                    <!--<th>ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>-->
-                    <th><md-button class="md-fab md-mini md-primary" ng-click="c.remove(c.data.partners,$index)"><i style="display:block;text-align:center" class="material-icons">remove</i></md-button></th>
+                <tr id="table_head">
+                    <th>ΠΟΣΟΣΤΟ (%)&nbsp;<span style="">Σύνολο Μετόχων: <strong>{{c.getTotal()}}%</strong></span></th>
+                    <th>
+                        <span style="vertical-align:middle">ΟΝΟΜΑΤΕΠΩΝΥΜΟ Ή ΕΠΩΝΥΜΙΑ</span><md-button style="float:right" class="md-raised" ng-click="c.remove(c.data.partners,$index)">Αφαιρεση</md-button>
+                    </th>
                 </tr>
             </thead>
             <tr>
@@ -24,16 +24,6 @@
                         <label>Εισαγωγή</label>
                         <input ng-model="partner.name">
                     </md-input-container>
-                <!--<td>
-                    <md-input-container class="md-block">
-                        <label>Επιλογή</label>
-                        <md-select ng-model="partner.type">
-                            <md-option ng-repeat="p in c.partnerType" value="{{p}}">
-                                {{p}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </td>-->
             </tr>
             <tr>
                 <th style="background-color:#EDEDED">ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>
@@ -109,18 +99,12 @@
                         <input ng-model="partner.position">
                     </md-input-container>
             </tr>
-            
-        </table>
-        <table>
             <tr>
-                <th>Συμμετοχή Φορέα ή Μετόχων σε άλλες Επιχειρήσεις</th>
-            </tr>
-            <tr>
-                <td>Ο Φορέας ή οι Μέτοχοι του συμμετέχουν σε άλλες επιχειρήσεις;</td>
+                <th style="background-color:#EDEDED">Ο ΦΟΡΕΑΣ ΣΥΜΜΕΤΕΧΕΙ ΣΕ ΑΛΛΕΣ ΕΠΙΧΕΙΡΗΣΕΙΣ;</th>
                 <td>
                     <md-input-container class="md-block">
                         <label>Ναι/Όχι</label>
-                        <md-select ng-model="partner.isMemberOtherCompanies" >
+                        <md-select ng-model="partner.isMemberOtherCompanies">
                             <md-option value="yes">
                                 Ναι
                             </md-option>
@@ -132,12 +116,11 @@
                 </td>
             </tr>
         </table>
-        <table class="table" style="max-width:70%; margin: auto;" ng-show="partner.isMemberOtherCompanies=='yes'">
-            <thead style="background-color:#EDEDED">
+        <table class="table" style="max-width:80%; margin: auto;" ng-show="partner.isMemberOtherCompanies=='yes'">
+            <thead id="table_head">
                 <tr>
-                    <th>ΠΟΣΟΣΤΟ%</th>
+                    <th>ΠΟΣΟΣΤΟ ΣΥΜΜΕΤΟΧΗΣ ΜΕΤΟΧΟΥ ΣΕ ΑΛΛΕΣ ΕΠΙΧΕΙΡΗΣΕΙΣ</th>
                     <th>ΟΝΟΜΑΤΕΠΩΝΥΜΟ Ή ΕΠΩΝΥΜΙΑ</th>
-                    <!--<th>ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>-->
                 </tr>
             </thead>
             <tr>
@@ -153,19 +136,9 @@
                         <input ng-model="partner.otherCompany.nameOrTitle">
                     </md-input-container>
                 </td>
-                <!--<td>
-                    <md-input-container class="md-block">
-                        <label>Επιλογή από Λίστα</label>
-                        <md-select ng-model="partner.otherCompany.typeOfPerson">
-                            <md-option ng-repeat="p in c.partnerType" value="{{p}}">
-                                {{p}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </td>-->
             </tr>
             <tr>
-                <th style="background-color:#EDEDED">ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</thstyle="background-color:#EDEDED">
+                <th style="background-color:#EDEDED">ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>
                 <td>
                     <md-input-container class="md-block">
                         <label>Επιλογή από Λίστα</label>
@@ -238,17 +211,125 @@
                     </md-input-container>
                 </td>
             </tr>
-            <tr>
-                <td style="background-color:#EDEDED"><strong>ΘΕΣΗ ΕΤΑΙΡΟΥ/ΜΕΤΟΧΟΥ ΣΤΟΝ ΦΟΡΕΑ</strong></td>
-                <td>
-                    <md-input-container class="md-block">
-                        <label>Εισαγωγή</label>
-                        <input ng-model="partner.otherCompany.partnersPosition">
-                    </md-input-container>
-                </td>
-            </tr>
         </table>
+        <hr />
+        <br />
     </div>
+    <table class="table" style="margin:auto">
+        <tr>
+            <td id="table_head">Συμμετέχει ο φορέας σε άλλες επιχειρήσεις;</td>
+            <td style="background-color:#EDEDED">
+                <md-input-container class="md-block">
+                    <label>Ναι/Όχι</label>
+                    <md-select ng-model="c.data.CompanyIsMemberOfOtherCompanies">
+                        <md-option value="yes">
+                            Ναι
+                        </md-option>
+                        <md-option value="no">
+                            Όχι
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table class="table" style="max-width:80%; margin: auto;" ng-show="c.data.CompanyIsMemberOfOtherCompanies=='yes'">
+        <thead id="table_head">
+            <tr>
+                <th>ΠΟΣΟΣΤΟ ΣΥΜΜΕΤΟΧΗΣ ΦΟΡΕΑ ΣΕ ΑΛΛΗ ΕΠΙΧΕΙΡΗΣΗ</th>
+                <th>ΕΠΩΝΥΜΙΑ</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.CompanyotherCompany.percentage">
+                </md-input-container>
+            </td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.CompanyotherCompany.nameOrTitle">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <th style="background-color:#EDEDED">ΕΙΔΟΣ ΠΡΟΣΩΠΟΥ</th>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Επιλογή από Λίστα</label>
+                    <md-select ng-model="c.data.CompanyotherCompany.typeOfPerson">
+                        <md-option ng-repeat="p in c.partnerType" value="{{p}}">
+                            {{p}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color:#EDEDED"><strong>ΧΩΡΑ ΕΓΚΑΤΑΣΤΑΣΗΣ/ΔΙΑΜΟΝΗΣ</strong></td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.CompanyotherCompany.Country">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3" style="background-color:#EDEDED"><strong>ΔΙΕΥΘΥΝΣΗ ΕΔΡΑΣ</strong></td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>ΟΔΟΣ - ΑΡΙΘΜΟΣ</label>
+                    <input ng-model="c.data.CompanyotherCompany.address">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <md-input-container class="md-block">
+                    <label>ΠΟΛΗ</label>
+                    <input ng-model="c.data.CompanyotherCompany.city">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <md-input-container class="md-block">
+                    <label>ΤΑΧ. ΚΩΔΙΚΑΣ</label>
+                    <input ng-model="c.data.CompanyotherCompany.postalCode">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color:#EDEDED"><strong>ΤΗΛΕΦΩΝΟ ΕΠΙΚΟΙΝΩΝΙΑΣ</strong></td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.CompanyotherCompany.phone">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color:#EDEDED"><strong>FAX</strong></td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.CompanyotherCompany.fax">
+                </md-input-container>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color:#EDEDED"><strong>e-mail</strong></td>
+            <td>
+                <md-input-container class="md-block">
+                    <label>Εισαγωγή</label>
+                    <input ng-model="c.data.CompanyotherCompany.email">
+                </md-input-container>
+            </td>
+        </tr>
+    </table>
     <md-button class="md-fab md-mini md-primary" ng-if="c.total&lt;100" ng-click="c.add('partners')">
         <i style="display:block;text-align:center" class="material-icons">add</i>
     </md-button>

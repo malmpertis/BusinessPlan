@@ -50,11 +50,19 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.MVC.2.0.3\lib\net45\Rotativa.MVC.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -195,6 +203,7 @@
     <Compile Include="Controllers\GeoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -248,7 +257,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="css\styles.css" />
+    <Content Include="Content\textAngular.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -260,6 +269,7 @@
     <Content Include="html\deadspot.html" />
     <Content Include="html\debug.html" />
     <Content Include="html\economicSituation.html" />
+    <Content Include="html\elevator_pitch.html" />
     <Content Include="html\general.html" />
     <Content Include="html\incomes_expenses.html" />
     <Content Include="html\index.html" />
@@ -273,6 +283,7 @@
     <Content Include="js\angular-chart.js" />
     <Content Include="js\Chart.min.js" />
     <Content Include="js\ng-app.js" />
+    <Content Include="Scripts\textAngular.min.js" />
     <Content Include="Models\model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>model.edmx</DependentUpon>
@@ -283,6 +294,7 @@
       <DependentUpon>model.edmx</DependentUpon>
       <LastGenOutput>model.cs</LastGenOutput>
     </Content>
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -295,6 +307,9 @@
     <Content Include="Models\model.edmx.diagram">
       <DependentUpon>model.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Content\sistasi.pdf" />
+    <Content Include="Content\ifistameni.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -306,6 +321,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\textAngular-rangy.min.js" />
+    <Content Include="Scripts\textAngular-sanitize.min.js" />
+    <Content Include="Views\Home\Images\background.jpeg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -340,12 +358,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Plan\Pdf.cshtml" />
+    <Content Include="Views\Plan\createDiag4.cshtml" />
+    <Content Include="Views\Plan\createDiag1.cshtml" />
+    <Content Include="Views\Plan\createDiag2.cshtml" />
+    <Content Include="Views\Plan\createDiag3.cshtml" />
+    <Content Include="Views\Plan\createDiag5.cshtml" />
+    <Content Include="Views\Plan\createDiag6.cshtml" />
+    <Content Include="Views\Pdf\Header.cshtml" />
+    <Content Include="Views\Pdf\Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Geo\" />
     <Folder Include="Views\html\" />
-    <Folder Include="Views\Plan\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

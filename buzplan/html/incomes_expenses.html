@@ -1,9 +1,9 @@
 <div>
     <h2>ΑΝΑΛΥΣΗ ΠΩΛΗΣΕΩΝ-ΕΣΟΔΩΝ ΚΑΙ ΕΞΟΔΩΝ ΣΕ ΒΑΘΟΣ ΤΡΙΕΤΙΑΣ</h2>
     <hr />
-    <h3>ΕΣΟΔΑ</h3>
+    <h3 id="title">ΕΣΟΔΑ</h3>
     <table class="table">
-        <thead style="background-color:#3949AB;color:#D3D6EC;">
+        <thead id="table_head">
             <tr>
                 <th>Όνομα Προϊόντος/Υπηρεσίας</th>
                 <th>Τιμή Προϊόντος ή υπηρεσίας</th>
@@ -20,6 +20,7 @@
         <tbody>
             <tr ng-repeat="income in c.data.incomes">
                 <td>
+                    <md-tooltip ng-show="income.name" md-direction="bottom">{{income.name}}</md-tooltip>
                     <md-input-container class="md-block">
                         <input aria-label="enter" type="text" ng-model="income.name" />
                     </md-input-container>
@@ -30,6 +31,7 @@
                     </md-input-container>
                 </td>
                 <td>
+                    <md-tooltip ng-show="income.description" md-direction="bottom">{{income.description}}</md-tooltip>
                     <md-input-container class="md-block">
                         <input aria-label="enter" type="text" ng-model="income.description" />
                     </md-input-container>
@@ -39,20 +41,20 @@
                         <input aria-label="enter" type="number" ng-model="income.predictionFirst" />
                     </md-input-container>
                 </td>
-                <td><span />{{income.incomesFirstYear}}</td>
+                <td id="table_content"><span />{{income.incomesFirstYear}}</td>
                 <td>
                     <md-input-container class="md-block">
                         <input aria-label="enter" type="number" ng-model="income.predictionSecond" />
                     </md-input-container>
                 </td>
-                <td><span />{{income.incomesSecondYear}}</td>
+                <td id="table_content"><span />{{income.incomesSecondYear}}</td>
                 <td>
                     <md-input-container class="md-block">
                         <input aria-label="enter" type="number" ng-model="income.predictionThird" />
                     </md-input-container>
                 </td>
-                <td><span />{{income.incomesThirdYear}}</td>
-                <td>
+                <td id="table_content"><span />{{income.incomesThirdYear}}</td>
+                <td id="table_content">
                     <md-button class="md-fab md-mini md-primary" ng-click="c.remove(c.data.incomes,$index)">
                         <i style="display:block;text-align:center" class="material-icons">remove</i>
                     </md-button>
@@ -60,29 +62,29 @@
             </tr>
             <tr>
                 <td colspan="10">
-                    <md-button class="md-fab md-mini md-primary" ng-click="c.add('incomes',{value:0,predictionFirst:0,predictionSecond:0,predictionThird:0})">
-                        <i style="display:block;text-align:center" class="material-icons">add</i>
+                    <md-button class="md-raised md-primary" ng-click="c.add('incomes',{value:0,predictionFirst:0,predictionSecond:0,predictionThird:0})">
+                        Προσθηκη Νεου
                     </md-button>
             </tr>
-            <tr style="background-color:#EEEEEE;">
+            <tr id="table_result">
                 <th>Συνολικά Έσοδα (Πωλήσεις)</th>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td>{{c.data.sumIncomesFirstYear}}</td>
+                <th>{{c.data.sumIncomesFirstYear|number:2}}</th>
                 <td></td>
-                <td>{{c.data.sumIncomesSecondYear}}</td>
+                <th>{{c.data.sumIncomesSecondYear|number:2}}</th>
                 <td></td>
-                <td>{{c.data.sumIncomesThirdYear}}</td>
+                <th>{{c.data.sumIncomesThirdYear|number:2}}</th>
                 <td></td>
             </tr>
         </tbody>
     </table>
     <hr />
     <!--ΔΑΠΑΝΕΣ-->
-    <h3>ΔΑΠΑΝΕΣ</h3>
+    <h3 id="title">ΔΑΠΑΝΕΣ</h3>
     <table class="table">
-        <thead style="background-color:#3949AB;color:#D3D6EC;">
+        <thead id="table_head">
             <tr>
                 <th>Α/Α</th>
                 <th>ΚΑΤΗΓΟΡΙΑ ΔΑΠΑΝΗΣ</th>
@@ -94,23 +96,24 @@
             </tr>
         </thead>
         <tr ng-repeat="expense in c.data.expenses">
-            <td ng-model="expense.index"><p>{{$index+1}}</p></td>
+            <td id="table_content" ng-model="expense.index"><p>{{$index+1}}</p></td>
             <td>
                 <md-input-container class="md=block">
-                    <md-select aria-label="category" ng-model="expense.category">
+                    <md-select style="width:300px;" aria-label="category" ng-model="expense.category">
                         <md-option ng-repeat="(kat, cat) in c.katDapanes" value="{{kat}}">{{kat}}</md-option>
                     </md-select>
                 </md-input-container>
-
-                <!--<select class="md-block" style="max-width:150px;min-width:150px;" ng-options="kat as kat.name for kat in c.katDapanes" ng-model="expense.category"></select>-->
             </td>
             <td>
                 <md-input-container class="md=block">
-                    <md-select aria-label="desc" ng-model="expense.description">
+                    <md-select style="width:300px;" aria-label="desc" ng-model="expense.description">
                         <md-option ng-repeat="value in c.katDapanes[expense.category]" value="{{value}}">{{value}}</md-option>
                     </md-select>
+                    <md-input-container ng-if="expense.description=='Άλλο'" class="md-block">
+                        <label>Διευκρινίστε</label>
+                        <input type="text" ng-model="expense.description_other"  />
+                    </md-input-container>
                 </md-input-container>
-                <!--<select class="md-block" style="max-width:150px;min-width:150px;" ng-options="value as value for value in expense.category.values" ng-model="expense.description"></select>-->
             </td>
             <td>
                 <md-input-container class="md-block">
@@ -127,7 +130,7 @@
                     <input aria-label="category" ng-model="expense.expensesThird" type="number" />
                 </md-input-container>
             </td>
-            <td>
+            <td id="table_content" style="text-align:center">
                 <md-button class="md-fab md-mini md-primary" ng-click="c.remove(c.data.expenses,$index)">
                     <i style="display:block;text-align:center" class="material-icons">remove</i>
                 </md-button>
@@ -135,46 +138,47 @@
         </tr>
         <tr>
             <td colspan="7">
-                <md-button class="md-fab md-mini md-primary" ng-click="c.add('expenses')">
-                    <i style="display:block;text-align:center" class="material-icons">add</i>
+                <md-button class="md-raised md-primary" ng-click="c.add('expenses')">
+                    Προσθηκη Νεου
                 </md-button>
             </td>
         </tr>
-        <tr style="background-color:#EEEEEE;">
+        <tr id="table_result">
             <th>Σύνολο Εξόδων</th>
             <td></td>
             <td></td>
-            <th>{{c.data.sumExpensesFirstYear}}</th>
-            <th>{{c.data.sumExpensesSecondYear}}</th>
-            <th>{{c.data.sumExpensesThirdYear}}</th>
+            <th>{{c.data.sumExpensesFirstYear|number:2}}</th>
+            <th>{{c.data.sumExpensesSecondYear|number:2}}</th>
+            <th>{{c.data.sumExpensesThirdYear|number:2}}</th>
             <th></th>
         </tr>
 
     </table>
     <hr />
+    <!--Σύνολο Εσόδων Εξόδων-->
     <table class="table">
-        <tr style="background-color:#3949AB;color:#D3D6EC;">
+        <tr id="table_head">
             <th>Σύνολο Εσόδων Εξόδων</th>
             <th></th>
         </tr>
         <tr>
-            <th>1ο έτος</th>
-            <td>{{c.data.IncomeMinusExpenseFirst = c.data.sumIncomesFirstYear-c.data.sumExpensesFirstYear||0}}</td>
+            <th id="table_content">1ο έτος</th>
+            <td>{{(c.data.IncomeMinusExpenseFirst = c.data.sumIncomesFirstYear-c.data.sumExpensesFirstYear||0)|number: 2}}</td>
         </tr>
         <tr>
-            <th>2ο έτος</th>
-            <td>{{c.data.IncomeMinusExpenseSecond = c.data.sumIncomesSecondYear-c.data.sumExpensesSecondYear||0}}</td>
+            <th id="table_content">2ο έτος</th>
+            <td>{{(c.data.IncomeMinusExpenseSecond = c.data.sumIncomesSecondYear-c.data.sumExpensesSecondYear||0)|number: 2}}</td>
         </tr>
         <tr>
-            <th>3ο έτος</th>
-            <td>{{c.data.IncomeMinusExpenseThird = c.data.sumIncomesThirdYear-c.data.sumExpensesThirdYear||0}}</td>
+            <th id="table_content">3ο έτος</th>
+            <td>{{(c.data.IncomeMinusExpenseThird = c.data.sumIncomesThirdYear-c.data.sumExpensesThirdYear||0)|number: 2}}</td>
         </tr>
         <tr>
-            <th>Φορολόγηση Κερδών</th>
+            <th id="table_content">Φορολόγηση Κερδών</th>
             <td>
-                <md-input-container >
+                <md-input-container>
                     <label>Ποσοστό Φορολογίας</label>
-                    <md-select ng-model="c.data.tax">
+                    <md-select style="width:150px;" ng-model="c.data.tax">
                         <md-option ng-repeat="tax in c.taxes" ng-value="tax.percentage">
                             {{tax.name}}
                         </md-option>
@@ -184,17 +188,17 @@
         </tr>
     </table>
     <table class="table">
-        <tr>
+        <tr id="table_head">
             <th>Καθαρά Κέρδη</th>
             <th>Πρώτο Έτος</th>
             <th>Δεύτερο Έτος</th>
             <th>Τρίτο Έτος</th>
         </tr>
-        <tr>
+        <tr id="table_result">
             <td></td>
-            <td>{{c.data.profitFirstYear = c.data.IncomeMinusExpenseFirst-c.data.IncomeMinusExpenseFirst*c.data.tax||'Ελλιπή Στοιχεία'}}</td>
-            <td>{{c.data.profitSecondYear = c.data.IncomeMinusExpenseSecond-c.data.IncomeMinusExpenseSecond*c.data.tax||'Ελλιπή Στοιχεία'}}</td>
-            <td>{{c.data.profitThirdYear = c.data.IncomeMinusExpenseThird-c.data.IncomeMinusExpenseThird*c.data.tax||'Ελλιπή Στοιχεία'}}</td>
+            <th>{{(c.data.profitFirstYear = c.data.IncomeMinusExpenseFirst-c.data.IncomeMinusExpenseFirst*c.data.tax||'Ελλιπή Στοιχεία')|number: 2}}</th>
+            <th>{{(c.data.profitSecondYear = c.data.IncomeMinusExpenseSecond-c.data.IncomeMinusExpenseSecond*c.data.tax||'Ελλιπή Στοιχεία')|number: 2}}</th>
+            <th>{{(c.data.profitThirdYear = c.data.IncomeMinusExpenseThird-c.data.IncomeMinusExpenseThird*c.data.tax||'Ελλιπή Στοιχεία')|number: 2}}</th>
         </tr>
     </table>
 </div>

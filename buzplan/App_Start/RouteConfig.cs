@@ -22,7 +22,7 @@ namespace buzplan
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "html", action = "Serve", page="index.html", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", page="index.html", id = UrlParameter.Optional }
             );
 
         }

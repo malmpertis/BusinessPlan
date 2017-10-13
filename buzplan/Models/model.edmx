@@ -93,7 +93,7 @@
           </Key>
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Item" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="Data" Type="nvarchar(max)" />
+          <Property Name="Data" Type="ntext" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">

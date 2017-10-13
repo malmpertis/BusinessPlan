@@ -1,0 +1,17 @@
+﻿@model buzplan.ObjectClasses.Plan
+@{
+    List<double> count = Model.educationLevels.years[0].yearData.Select(c => c.employeesCount).ToList();
+    List<string> education = Model.educationLevels.years[0].yearData.Select(c=> c.employeesEducation + " " + (c.employeesCount*100/Model.educationLevels.years[0].yearData.Sum(d=> d.employeesCount))+"%").ToList();
+
+    var myChart = new Chart(width: 900, height: 450)
+        .AddSeries(
+            chartType: "Pie",
+            name: "Κατανομή του προσωπικού",
+            xValue: education,
+            yValues: count)
+        .Write();
+}
+
+
+
+

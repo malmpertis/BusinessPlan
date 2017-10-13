@@ -1,7 +1,7 @@
 ﻿<div>
     <h2>
         ΑΝΑΛΥΣΗ ΥΦΙΣΤΑΜΕΝΗΣ ΟΙΚΟΝΟΜΙΚΗΣ ΚΑΤΑΣΤΑΣΗΣ
-        <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(17)">
+        <md-button class="md-icon-button contentbtn" style="vertical-align: middle;" ng-click="c.showAlert(17)">
             <i style="display:block;text-align:center" class="material-icons">help</i>
         </md-button>
     </h2>
@@ -14,16 +14,16 @@
     </p>
     <table class="table" ng-show="c.data.company.businessType==c.businessTypes[1]">
         <thead>
-            <tr style="background-color:#3949AB;color:#D3D6EC;">
+            <tr id="table_head">
                 <th>Έτος</th>
                 <th ng-repeat="k in c.data.xronia">{{k}}</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="x in c.data.totals" ng-init="$index2=$index">
-                <th style="background-color:#EEEEEE;" layout="row" layout-align=" center">
-                    <i flex="10" ng-if="x.hint" class="material-icons" ng-click="c.showAlert(x.hint)">help_outline</i>
-                    <span flex="90">
+                <th id="table_content">
+                    <i ng-if="x.hint" class="material-icons" style="cursor:pointer;vertical-align: middle;" ng-click="c.showAlert(x.hint)">help_outline</i>
+                    <span>
                         {{x.title}}
                     </span>
                 </th>
@@ -39,45 +39,3 @@
         </tbody>
     </table>
 </div>
-
-<!--<div>
-    <h2>
-        ΑΝΑΛΥΣΗ ΥΦΙΣΤΑΜΕΝΗΣ ΟΙΚΟΝΟΜΙΚΗΣ ΚΑΤΑΣΤΑΣΗΣ
-        <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(17)">
-            <i style="display:block;text-align:center" class="material-icons">help</i>
-        </md-button>
-    </h2>
-    <p>
-        <md-input-container>
-            <label>Εισάγετε Έτος:</label>
-            <input type="number" name="year" value="" ng-model="c.data.yearSelectedForTable" />
-        </md-input-container>
-        <md-button class="md-raised md-primary" ng-click="c.createRows(c.data.yearSelectedForTable,c.data.company.nuberOfCompletedYears)">Δημιουργια Πινακα</md-button>
-    </p>
-    <table class="table" ng-show="c.data.company.businessType==c.businessTypes[1]">
-        <thead>
-            <tr style="background-color:#3949AB;color:#D3D6EC;">
-                <th>Έτος</th>
-                <th ng-repeat="k in c.data.xronia">{{k}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="x in c.totals" ng-init="$index2=$index">
-                <th style="background-color:#EEEEEE;" layout="row" layout-align=" center">
-                    <i flex="10" ng-if="x.hint" class="material-icons" ng-click="c.showAlert(x.hint)">help_outline</i>
-                    <span flex="90">
-                        {{x.title}}
-                    </span>
-                </th>
-                <td ng-if="!x.formula" ng-repeat="y in c.data.totals[$index2].values track by $index">
-                    <md-input-container class="md-block">
-                        <input aria-label="values" type="number" ng-model="c.data.totals[$index2].values[$index]" />
-                    </md-input-container>
-                </td>
-                <td style="background-color:#CFD8DC;" ng-if="x.formula" ng-repeat="y in c.data.totals[$index2].values track by $index">
-                    <span>{{x.formula($index)|number:2}}</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>-->

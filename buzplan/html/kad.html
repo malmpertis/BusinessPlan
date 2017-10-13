@@ -3,20 +3,20 @@
     <hr />
     <table class="table">
         <thead>
-            <tr style="background-color:#3949AB;color:#D3D6EC;">
+            <tr id="table_head">
                 <th>ΚΑΔ</th>
                 <th>Περιγραφή δραστηριότητας</th>
                 <th>Αναζήτηση</th>
                 <th>Κύριος ΚΑΔ</th>
                 <th>Ημερομηνία</th>
-                <th></th>
+                <th>Αφαίρεση</th>
             </tr>
         </thead>
         <tr ng-repeat="kad in c.data.kads">
-            <th>
+            <th id="table_result">
                 {{kad.id}}
             </th>
-            <td>{{kad.title|limitTo:35}}<span ng-if="kad.title.length>0">...</span> </td>
+            <td id="table_content">{{kad.title|limitTo:100}}<span ng-if="kad.title.length>0">...</span> </td>
             <td>
                 <div style="position:relative">
                     <md-input-container class="md-block">
@@ -24,8 +24,10 @@
                         <input ng-model="c['temp'+$index].searchInput" ng-keyup="c.onSearchKad(c['temp'+$index].searchInput,$index)">
                     </md-input-container>
                     <div class="search" ng-if="c.tempIndex==$index&&c.kaad&&c.kaad.length">
-                        <div ng-repeat="k in c.kaad" ng-click="c.selectKad(k,kad)">
-                            {{k.title}}
+                        <div layout="row" style="padding:1px 5px;{{$last?'':'border-bottom:0.5px dotted #808080'}}" ng-repeat="k in c.kaad" ng-click="c.selectKad(k,kad)">
+                            <span flex="20"><strong>{{k.id}}:</strong></span>
+                            <span flex="80">{{k.title}}</span>
+                            
                         </div>
                     </div>
                 </div>
@@ -51,7 +53,9 @@
                     </md-datepicker>
                 </md-input-container>
             </td>
-            <td><md-button class="md-fab md-mini md-primary" ng-click="c.remove(c.data.kads,$index)"><i style="display:block;text-align:center" class="material-icons">remove</i></md-button></td>
+            <td id="table_content">
+                <md-button class="md-fab md-mini md-primary" ng-click="c.remove(c.data.kads,$index)"><i style="display:block;text-align:center" class="material-icons">remove</i></md-button>
+            </td>
         </tr>
         <tr>
             <td colspan="6"><md-button class="md-fab md-mini md-primary" ng-click="c.add('kads')"><i style="display:block;text-align:center" class="material-icons">add</i></md-button></td>
