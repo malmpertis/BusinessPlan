@@ -1,0 +1,27 @@
+﻿@model buzplan.ObjectClasses.Plan
+@{
+    var myChart = new Chart(width: 800, height: 400, theme: "<Chart Palette=\"SemiTransparent\" BorderColor=\"#000\" BorderWidth=\"2\" BorderlineDashStyle=\"Solid\">\r\n<ChartAreas>\r\n\t<ChartArea _Template_=\"All\" Name=\"Default\">\r\n\t\t\t\t\t\t<AxisX>\r\n\t\t\t\t\t\t\t\t<MinorGrid Enabled=\"False\" />\r\n\t\t\t\t\t\t\t\t<MajorGrid Enabled=\"False\" />\r\n\t\t\t\t\t\t</AxisX>\r\n\t\t\t\t\t\t<AxisY>\r\n\t\t\t\t\t\t\t\t<MajorGrid Enabled=\"False\" />\r\n\t\t\t\t\t\t\t\t<MinorGrid Enabled=\"False\" />\r\n\t\t\t\t\t\t</AxisY>\r\n\t\t</ChartArea>\r\n</ChartAreas>\r\n<Legends>\r\n\t\t<Legend _Template_=\"All\" BackColor=\"Transparent\" Docking=\"Right\" Font=\"style=Bold\" LegendStyle=\"Column\">\r\n\t\t</Legend>\r\n\t</Legends>\r\n</Chart>")
+        .AddLegend(name: "Συνολικά Έσοδα")
+        .AddLegend(name: "Σταθερό Κόστος")
+        .AddLegend(name: "Συνολικό Κόστος")
+        .AddSeries(
+            chartType: "Line",
+            name: "Συνολικά Έσοδα",
+            xValue: new[] { 0, 1 },
+            yValues: new[] { 0, Model.deadspot.ame + Model.deadspot.afc + Model.deadspot.avc })
+        .AddSeries(
+            chartType: "Line",
+            name: "Σταθερό Κόστος",
+            xValue: new[] { 0, 1 },
+            yValues: new[] { Model.deadspot.afc, Model.deadspot.afc})
+        .AddSeries(
+            chartType: "Line",
+            name: "Συνολικό Κόστος",
+            xValue: new[] { 0, 1 },
+            yValues: new[] { Model.deadspot.afc, Model.deadspot.afc+Model.deadspot.avc })
+        .SetXAxis("Παραγωγή και Πωλήσεις",0,1)
+        .SetYAxis(
+            title: "Έσοδα και Κόστος"
+        )
+        .Write();
+}

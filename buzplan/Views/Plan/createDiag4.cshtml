@@ -1,0 +1,14 @@
+﻿
+@model buzplan.ObjectClasses.Plan
+
+@{
+    var myChart = new Chart(width: 900, height: 450)
+        .AddLegend(name: "Έσοδα - Έξοδα")
+        .AddSeries(
+            name: "Έσοδα - Έξοδα",
+            xValue: new[] { "1o Έτος", "2ο Έτος", "3ο Έτος" },
+            yValues: new[] { Model.profitFirstYear.ToString() ,Model.profitSecondYear.ToString(), Model.profitThirdYear.ToString() })
+        .SetXAxis(title: "Έτος")
+        .SetYAxis(title: "Κέρδη (€)")
+        .Write();
+}

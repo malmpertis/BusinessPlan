@@ -1,31 +1,52 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+<style>
+    .jumbotron {
+        background-color: black;
+        background: url("https://images.pexels.com/photos/590045/pexels-photo-590045.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb") center center;
+        background-repeat: no-repeat;
+    }
+</style>
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Business Plan</h1>
+    <p class="lead">Δημιουργήστε εύκολα και γρήγορα το επιχειρηματικό σχέδιο της υφιστάμενης ή υπό σύσταση επιχείρησής σας.</p>
+    <p class="lead">Μετά τη δημιουργία μπορείτε να κατέβάσετε σε μορφή PDF το Business Plan</p>
+    @if (User.Identity.IsAuthenticated == false)
+    {
+        <p>Για να αρχίσετε πρέπει να <span>@Html.ActionLink("συνδεθείτε", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</span></p>
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p><a href="/html/index.html" class="btn btn-primary" target="_blank">Μεταβαση &raquo;</a></p>
+    }
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Εύκολη Επεξεργασία</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Εφόσον έχετε δημιουργήσει ένα Επιχειρηματικό Σχέδιο μέσω της εφαρμογής μπορείτε κατόπιν
+            και οποιαδήποτε στιγμή το επιθυμήσετε και κάνοντας login στην εφαρμογή
+            να τροποποιήσετε τα κείμενα ή τα οικονομικά στοιχεία και να παράξετε νεότερες εκδόσεις του.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Υφιστάμενες Επιχειρήσεις</h2>
+        <p>
+            Μπορείτε να κατεβάσετε και να εξετάσετε τα επισυναπτόμενα πρότυπα επιχειρηματικά σχέδια που βρίσκονται,
+            για να πάρετε μια ιδέα σχετικά με το ύφος και τον τρόπο συμπλήρωσης των πεδίων.
+        </p>
+        <p><a href="~/Content/ifistameni.pdf" class="btn btn-primary" download>Κατεβάστε το πρότυπο</a></p>
+
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Επιχειρήσεις Υπό Σύσταση</h2>
+        <p>
+            Μπορείτε να κατεβάσετε και να εξετάσετε τα επισυναπτόμενα πρότυπα επιχειρηματικά σχέδια που βρίσκονται,
+            για να πάρετε μια ιδέα σχετικά με το ύφος και τον τρόπο συμπλήρωσης των πεδίων.
+        </p>
     </div>
+    <p><a href="~/Content/sistasi.pdf" class="btn btn-primary" download>Κατεβάστε το πρότυπο</a></p>
+
 </div>

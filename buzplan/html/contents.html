@@ -1,21 +1,32 @@
 <md-sidenav class="md-sidenav-left"
             md-component-id="left"
             md-is-locked-open="$mdMedia('gt-md')"
-            md-whiteframe="4"
+            md-whiteframe="3"
             tabindex="-1"
             style="height:100%">
     <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Περιεχόμενα
+        <h1 class="md-toolbar-tools">
+            Περιεχόμενα
             <md-button ng-click="c.close()" class="md-icon-button contentbtn" aria-label="Settings" hide-gt-md>
                 <i style="display:block;text-align:center" class="material-icons">menu</i>
             </md-button>
         </h1>
     </md-toolbar>
-    <md-content>
-        <md-menu-item ng-repeat="s in c.sections" ng-click="c.changeActive(s.id)">
-            <md-button style="{{s.id==c.activeSection? 'background-color:#EEEEEE;color:#4152B3': ''}}" ng-disabled="s.isDisabled&&s.isDisabled()">
-                {{s.desc}}
-            </md-button>
-        </md-menu-item>
-    </md-content>
+    <div layout="column">
+        <md-content>
+            <md-menu-item ng-repeat="s in c.sections" ng-click="c.changeActive(s.id)">
+                <md-button style="{{s.id==c.activeSection? 'background-color:#EEEEEE;color:#4152B3': ''}}" ng-disabled="s.isDisabled&&s.isDisabled()">
+                    {{s.desc}}
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button class="md-raised md-primary" href="/Plan/Pdf" download="BusinessPlan.pdf">
+                    <md-tooltip md-direction="bottom">Για να κατεβάσετε το PDF θα πρέπει να έχετε συμπληρώσει όλα τα απαραίτητα πεδία</md-tooltip>
+                    <i class="material-icons" style="vertical-align: middle;">file_download</i>
+                    ΚΑΤΕΒΑΣΤΕ PDF
+                </md-button>
+            </md-menu-item>
+        </md-content>
+    </div>
+
 </md-sidenav>

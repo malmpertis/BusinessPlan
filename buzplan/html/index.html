@@ -3,13 +3,15 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
-    <link href="../Content/styles.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../Content/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="../Content/textAngular.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body ng-app="app" ng-controller="controller as c" layout="row">
-
     <aside>
         <div style="height:100%">
             <ng-include src="'contents.html'"></ng-include>
@@ -26,20 +28,10 @@
                 <span flex></span>
             </div>
         </md-toolbar>
-            <md-content class="views" ng-repeat="s in c.sections" ng-if="s.id == c.activeSection">
-                
-                        <ng-include src="'/html/'+s.src"></ng-include>
-                        <!--<div ui-view></div>-->
-                    
-            </md-content>
-        <!--Να σβηστει!!!!!!!-->
-        <!--<div style="margin-bottom:0">
-            <ng-include src="'debug.html'"></ng-include>
-        </div>-->
+        <md-content class="views" ng-repeat="s in c.sections" ng-if="s.id == c.activeSection">
+            <ng-include src="'/html/'+s.src"></ng-include>
+        </md-content>
     </main>
-
-    
-
 
     <!--Scripts-->
     <div>
@@ -55,7 +47,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.1.0/angular-moment.min.js"></script>
         <script src="../js/Chart.min.js"></script>
         <script src="../js/angular-chart.js"></script>
-
+        <script src="../Scripts/textAngular-rangy.min.js"></script>
+        <script src="../Scripts/textAngular-sanitize.min.js"></script>
+        <script src="../Scripts/textAngular.min.js"></script>
         <!--Controllers and Factories-->
         <script src="../js/controller.js"></script>
     </div>

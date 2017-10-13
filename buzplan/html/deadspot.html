@@ -6,11 +6,12 @@
         </md-button>
     </h2>
     <hr>
-    <h3>Αναφέρετε:</h3>
-    <table>
+    <table class="table">
+        <tr id="table_head">
+            <td colspan="2" >Αναφέρετε:</td>
+        </tr>
         <tr>
-            <td>Α.</td>
-            <td>Αναμενόμενο μοναδιαίο έσοδο προϊόντος/υπηρεσίας</td>
+            <td id="table_content">Αναμενόμενο μοναδιαίο έσοδο προϊόντος/υπηρεσίας</td>
             <td>
                 <md-input-container>
                     <label>Τιμή</label>
@@ -18,8 +19,7 @@
                 </md-input-container>
         </tr>
         <tr>
-            <td>Β.</td>
-            <td>
+            <td id="table_content">
                 Μέσος όρος μοναδιαίου (μεταβλητού) κόστους προϊόντος/υπηρεσίας
                 <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(13)">
                     <i style="display:block;text-align:center" class="material-icons">help</i>
@@ -32,8 +32,7 @@
                 </md-input-container>
         </tr>
         <tr>
-            <td>Γ.</td>
-            <td>
+            <td id="table_content">
                 Εκτιμώμενα μηνιαία Σταθερά κόστη λειτουργίας επιχείρησης
                 <md-button class="md-icon-button contentbtn" ng-click="c.showAlert(14)">
                     <i style="display:block;text-align:center" class="material-icons">help</i>
@@ -44,16 +43,15 @@
                     <label>Τιμή</label>
                     <input ng-model="c.data.deadspot.afc" type="number" />
                 </md-input-container>
+            </td>
         </tr>
-    </table>
-    <table>
-        <tr>
+        <tr style="background-color:#CFD8DC;">
             <td>Ελάχιστες Μονάδες Νεκρού Σημείου</td>
-            <td><span >{{c.data.deadspot.deadSpotMinimum = c.data.deadspot.afc/(c.data.deadspot.ame-c.data.deadspot.avc)||0}}€</span></td>
+            <td><span >{{(c.data.deadspot.deadSpotMinimum = c.data.deadspot.afc/(c.data.deadspot.ame-c.data.deadspot.avc)||0)|number:2}}€</span></td>
         </tr>
-        <tr>
+        <tr style="background-color:#CFD8DC;">
             <td>Πωλήσεις (σε ευρώ) ώστε να ξεκινήσει η επιχείρηση να έχει κέρδη:</td>
-            <td><span>{{c.data.deadspot.salesNeeded = c.data.deadspot.deadSpotMinimum*c.data.deadspot.ame||0}}€</span></td>
+            <td><span>{{(c.data.deadspot.salesNeeded = c.data.deadspot.deadSpotMinimum*c.data.deadspot.ame||0)|number:2}}€</span></td>
         </tr>
     </table>
 </div>

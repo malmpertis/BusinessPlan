@@ -1,0 +1,28 @@
+﻿
+@model buzplan.ObjectClasses.Plan
+@{
+
+    //theme: "<Chart Palette=\"SemiTransparent\" BorderColor=\"#000\" BorderWidth=\"2\" BorderlineDashStyle=\"Solid\">\r\n<ChartAreas>\r\n\t<ChartArea _Template_=\"All\" Name=\"Default\">\r\n\t\t\t\t\t\t<AxisX>\r\n\t\t\t\t\t\t\t\t<MinorGrid Enabled=\"False\" />\r\n\t\t\t\t\t\t\t\t<MajorGrid Enabled=\"False\" />\r\n\t\t\t\t\t\t</AxisX>\r\n\t\t\t\t\t\t<AxisY>\r\n\t\t\t\t\t\t\t\t<MajorGrid Enabled=\"False\" />\r\n\t\t\t\t\t\t\t\t<MinorGrid Enabled=\"False\" />\r\n\t\t\t\t\t\t</AxisY>\r\n\t\t</ChartArea>\r\n</ChartAreas>\r\n<Legends>\r\n\t\t<Legend _Template_=\"All\" BackColor=\"Transparent\" Docking=\"Right\" Font=\"style=Bold\" LegendStyle=\"Column\">\r\n\t\t</Legend>\r\n\t</Legends>\r\n</Chart>"
+    var myChart = new Chart(width: 900, height: 450)
+        .AddLegend(name: "Πωλήσεις")
+        .AddLegend(name: "Μικτά Κέρδη")
+        .AddLegend(name: "Καθαρά Κέρδη")
+        .AddSeries(
+            chartType: "Column",
+            name: "Πωλήσεις",
+            xValue: Model.xronia,
+            yValues: Model.totals[0].values)
+        .AddSeries(
+            chartType: "Column",
+            name: "Μικτά Κέρδη",
+            xValue: Model.xronia,
+            yValues: Model.totals[3].values)
+        .AddSeries(
+            chartType: "Column",
+            name: "Καθαρά Κέρδη",
+            xValue: Model.xronia,
+            yValues: Model.totals[11].values)
+        .SetXAxis(title: "Έτος", min: Model.xronia.Min() - 1, max: Model.xronia.Max() + 1)
+        .SetYAxis(title: "Ευρώ (€)")
+        .Write();
+}
