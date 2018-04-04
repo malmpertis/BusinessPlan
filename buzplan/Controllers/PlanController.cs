@@ -28,10 +28,10 @@ namespace buzplan.Controllers
         {
             string UserId = User.Identity.GetUserId();
             string userImage = UserId + "." + file.FileName.Split('.').Last();
-            file.SaveAs(AppDomain.CurrentDomain.BaseDirectory + userImage);
+            file.SaveAs(AppDomain.CurrentDomain.BaseDirectory+ "logos\\" + userImage);
             return Json(new
             {
-                url = "/" + userImage
+                url = "/logos/" + userImage
             });
         }
 

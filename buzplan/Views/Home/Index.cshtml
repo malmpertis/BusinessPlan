@@ -1,52 +1,129 @@
-﻿@{
+﻿@using buzplan.Models
+@model LoginViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 <style>
     .jumbotron {
         background-color: black;
-        background: url("https://images.pexels.com/photos/590045/pexels-photo-590045.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb") center center;
+        background-image: url("/Content/Images/background.jpg");
+        background-size: cover;
+        background-position: center;
         background-repeat: no-repeat;
+        font-size: 16px;
     }
 </style>
-<div class="jumbotron">
-    <h1>Business Plan</h1>
-    <p class="lead">Δημιουργήστε εύκολα και γρήγορα το επιχειρηματικό σχέδιο της υφιστάμενης ή υπό σύσταση επιχείρησής σας.</p>
-    <p class="lead">Μετά τη δημιουργία μπορείτε να κατέβάσετε σε μορφή PDF το Business Plan</p>
-    @if (User.Identity.IsAuthenticated == false)
-    {
-        <p>Για να αρχίσετε πρέπει να <span>@Html.ActionLink("συνδεθείτε", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</span></p>
-    }
-    @if (User.Identity.IsAuthenticated)
-    {
-        <p><a href="/html/index.html" class="btn btn-primary" target="_blank">Μεταβαση &raquo;</a></p>
-    }
+<div class="container-fluid">
+    <div class="jumbotron row">
+        <div id="frozen" class="col-md-@(User.Identity.IsAuthenticated? "12":"8")">
+            <h2>Business Plan</h2>
+            @*<p class="lead">Δημιουργήστε εύκολα και γρήγορα το επιχειρηματικό σχέδιο της υφιστάμενης ή υπό σύσταση επιχείρησής σας.</p>
+                <p class="lead">Μετά τη δημιουργία μπορείτε να κατέβάσετε σε μορφή PDF το Business Plan</p>*@
+            <p style="text-align:justify">Το επιχειρηματικό σχέδιο (Business plan) αποτελεί την γραπτή έκφραση της στρατηγικής που πρόκειται να ακολουθήσει η επιχείρηση και είναι αποτέλεσμα σχεδιασμού που θα βοηθήσει την διοίκηση και το ανθρώπινο δυναμικό να διατηρήσει την πορεία της προς την επίτευξη των γενικών και ειδικών στόχων. Σκοπός του είναι να αποτυπωθεί η επιχειρηματική ιδέα και να παρουσιαστούν στους ενδιαφερόμενους με ακρίβεια, τα βήματα και το ευρύτερο πλαίσιο προς την υλοποίηση του. Το επιχειρηματικό σχέδιο συντάσσεται από τον ίδιο τον επιχειρηματία σε συνεργασία με ομάδα εξειδικευμένων συμβούλων στρατηγικής ανάπτυξης και επενδύσεων.</p>
+            <p style="text-align:justify">
+                <span>Η χρησιμότητά του συνοψίζεται στα εξής σημεία:</span>
+                <ul>
+                    <li>Στην αξιολόγηση της κάθε νέας επιχειρηματικής ιδέας ή επέκτασης αυτής (συμπεριλαμβανομένης της ίδρυσης νέας μονάδας ή επιχείρησης), με σκοπό την λήψη απόφασης περί ανάληψης ή μη του εκάστοτε επιχειρηματικού κινδύνου σε όρους οικονομικής ή άλλης ωφέλειας.</li>
+                    <li>Στον έλεγχο και στην παρακολούθηση τυχόν αποκλίσεων από τους αρχικούς στόχους όπως έχουν τεθεί, με σκοπό να γίνονται εγκαίρως οι κατάλληλες διορθωτικές ενέργειες.</li>
+                    <li>Στην αναζήτηση εξωτερικών πηγών χρηματοδότησης (π.χ. τράπεζες, κρατικούς και ευρωπαϊκούς οργανισμούς, ή υποψήφιους εταίρους/επενδυτές).</li>
+                </ul>
+            </p>
+            <p style="text-align:justify">Δεν υπάρχουν μυστικές «νόρμες» και κανόνες για την δημιουργία ενός σωστού επιχειρηματικού σχεδίου, εκτός από έναν: Η επιχείρηση σας, ανεξαρτήτως μεγέθους, νομικής μορφής, δραστηριότητας, χρόνου σύστασης και λειτουργίας, είναι μοναδική. Οπότε αντίστοιχα μοναδικό πρέπει να είναι και το επιχειρηματικό σας πλάνο!</p>
+            @if (User.Identity.IsAuthenticated == false)
+            {
+                <p>Για να αρχίσετε πρέπει να <span>@Html.ActionLink("συνδεθείτε", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</span></p>}
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p><a href="/html/index.html" class="btn btn-primary" target="_blank">Μεταβαση &raquo;</a></p>}
+        </div>
+
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="col-md-4">
+                <div id="frozen">
+                    <section id="loginForm">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <h4>Συνδεθείτε</h4>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="col-md-3">Email</label>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3">Κωδικός</label>
+                                <div class="col-md-6">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+                                    <div class="col-md-offset-1 col-md-10">
+                                        <div class="checkbox">
+                                            @Html.CheckBoxFor(m => m.RememberMe)
+                                            @Html.LabelFor(m => m.RememberMe)
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="submit" value="Σύνδεση" class="btn btn-default" />
+                                </div>
+                            </div>
+                            @*<p>
+                                    @Html.ActionLink("Εγγραφείτε", "Register", "Account")
+                                </p>*@
+                            @* Enable this once you have account confirmation enabled for password reset functionality
+                                <p>
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                </p>*@}
+                    </section>
+                </div>
+            </div>
+        }
+
+
+
+
+
+
+
+
+
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Εύκολη Επεξεργασία</h2>
-        <p>
+
+<div style="margin: 0 55px;" class="row body-content">
+    <div class="col-md-3">
+        <h3>Εύκολη Επεξεργασία</h3>
+        <p style="text-align:justify">
             Εφόσον έχετε δημιουργήσει ένα Επιχειρηματικό Σχέδιο μέσω της εφαρμογής μπορείτε κατόπιν
             και οποιαδήποτε στιγμή το επιθυμήσετε και κάνοντας login στην εφαρμογή
             να τροποποιήσετε τα κείμενα ή τα οικονομικά στοιχεία και να παράξετε νεότερες εκδόσεις του.
         </p>
     </div>
-    <div class="col-md-4">
-        <h2>Υφιστάμενες Επιχειρήσεις</h2>
-        <p>
+    <div class="col-md-4 col-lg-offset-1">
+        <h3>Υφιστάμενες Επιχειρήσεις</h3>
+        <p style="text-align:justify">
             Μπορείτε να κατεβάσετε και να εξετάσετε τα επισυναπτόμενα πρότυπα επιχειρηματικά σχέδια που βρίσκονται,
             για να πάρετε μια ιδέα σχετικά με το ύφος και τον τρόπο συμπλήρωσης των πεδίων.
         </p>
         <p><a href="~/Content/ifistameni.pdf" class="btn btn-primary" download>Κατεβάστε το πρότυπο</a></p>
 
     </div>
-    <div class="col-md-4">
-        <h2>Επιχειρήσεις Υπό Σύσταση</h2>
-        <p>
+    <div class="col-md-3 col-lg-offset-1">
+        <h3>Επιχειρήσεις Υπό Σύσταση</h3>
+        <p style="text-align:justify">
             Μπορείτε να κατεβάσετε και να εξετάσετε τα επισυναπτόμενα πρότυπα επιχειρηματικά σχέδια που βρίσκονται,
             για να πάρετε μια ιδέα σχετικά με το ύφος και τον τρόπο συμπλήρωσης των πεδίων.
         </p>
+        <p><a href="~/Content/sistasi.pdf" class="btn btn-primary" download>Κατεβάστε το πρότυπο</a></p>
     </div>
-    <p><a href="~/Content/sistasi.pdf" class="btn btn-primary" download>Κατεβάστε το πρότυπο</a></p>
 
 </div>
