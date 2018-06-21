@@ -284,6 +284,7 @@
     <Content Include="js\angular-chart.js" />
     <Content Include="js\Chart.min.js" />
     <Content Include="js\ng-app.js" />
+    <Content Include="logos\56c002eb-c8e4-468f-8158-04ae2efbf030.PNG" />
     <Content Include="Scripts\textAngular.min.js" />
     <Content Include="Models\model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -311,6 +312,8 @@
     <Content Include="App_Browsers\qt.browser" />
     <Content Include="Content\sistasi.pdf" />
     <Content Include="Content\ifistameni.pdf" />
+    <None Include="Properties\PublishProfiles\almpertis-bplan - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\almpertis-bplan - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
