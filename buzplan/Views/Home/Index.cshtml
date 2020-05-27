@@ -6,11 +6,12 @@
 <style>
     .jumbotron {
         background-color: black;
-        background-image: url("Images/background.jpeg");
+        background-image: url("/Content/Images/background.jpeg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         font-size: 16px;
+        margin: 0;
     }
 </style>
 <div class="container-fluid">
@@ -75,9 +76,9 @@
                                     <input type="submit" value="Σύνδεση" class="btn btn-default" />
                                 </div>
                             </div>
-                            @*<p>
-                                    @Html.ActionLink("Εγγραφείτε", "Register", "Account")
-                                </p>*@
+                            <p>
+                                @Html.ActionLink("Εγγραφείτε", "Register", "Account")
+                             </p>
                             @* Enable this once you have account confirmation enabled for password reset functionality
                                 <p>
                                     @Html.ActionLink("Forgot your password?", "ForgotPassword")
